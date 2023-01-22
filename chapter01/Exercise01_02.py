@@ -1,4 +1,6 @@
 #(Display the same message five times)
 # Write a program that displays Welcome to Python five times
-print("Welcome to Python\n" * 5)
+
+for i in range (5):
+ print("Welcome to Python")
 
