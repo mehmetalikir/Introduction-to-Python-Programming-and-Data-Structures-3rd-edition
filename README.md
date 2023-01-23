@@ -1,5 +1,5 @@
 
- Introduction to Python™ Programming and Data Structures 3nd edition by Y. Liang
+ Introduction to Python™ Programming and Data Structures 3rd edition by Y. Liang
  
  For introductory courses in Python Programming and Data Structures.
 
