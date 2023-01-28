@@ -3,7 +3,7 @@
  
  For introductory courses in Python Programming and Data Structures.
 
-
+![pearson](http://www.bibdsl.co.uk/imagegallery2/publisher/batch3776/9781292424125.jpg)
 
 A fundamentals first approach to programming helps students create efficient, elegant code 
 
