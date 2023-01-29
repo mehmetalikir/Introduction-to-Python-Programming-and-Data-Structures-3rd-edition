@@ -1,9 +1,9 @@
 
- Introduction to Python™ Programming and Data Structures 2nd edition by Y. Liang
+ Introduction to Python™ Programming and Data Structures 3rd edition by Y. Liang
  
  For introductory courses in Python Programming and Data Structures.
 
-
+![pearson](http://www.bibdsl.co.uk/imagegallery2/publisher/batch3776/9781292424125.jpg)
 
 A fundamentals first approach to programming helps students create efficient, elegant code 
 
