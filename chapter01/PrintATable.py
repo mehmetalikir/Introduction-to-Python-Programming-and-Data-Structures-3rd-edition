@@ -1,5 +1,7 @@
 #(Print a table) Write a program that displays the followng table:
 
+
+#Display a table
 print("a    a^2    a^3")
 print("1    1       1")
 print("2    4       8")
