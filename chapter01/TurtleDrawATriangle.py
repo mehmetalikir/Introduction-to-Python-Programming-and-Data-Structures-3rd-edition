@@ -1,6 +1,6 @@
 #Exercise01_14
-''' (Turtle: draw a triangle) Write a program that draws four squares in the center
-of the screen, as shown in Figure 1.12c'''
+''' (Turtle: draw a triangle) Write a program that draws a triangle as shown in
+Figure 1.12c'''
 
 import turtle
 

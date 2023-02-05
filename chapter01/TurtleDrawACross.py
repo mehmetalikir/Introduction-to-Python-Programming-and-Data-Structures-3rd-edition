@@ -1,6 +1,6 @@
 #Exercise01_13
-''' (Turtle: draw a cross) Write a program that draws four squares in the center
-of the screen, as shown in Figure 1.12b'''
+''' (Turtle: draw a cross) Write a program that draws a cross as shown in
+Figure 1.12b'''
 
 import turtle
 
