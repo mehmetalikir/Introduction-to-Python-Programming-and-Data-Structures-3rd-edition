@@ -3,5 +3,4 @@
 # GitHub: /hidirsezgin, /mehmetalikir
 
 #Exercise02_01
-''' () '''
-
+''' () Write a program that'''
