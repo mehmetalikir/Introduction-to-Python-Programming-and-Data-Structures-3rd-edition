@@ -10,8 +10,10 @@ the minutes. For simplicity, assume a year has 365 days'''
 #Prompts the user to enter the minutes
 minutes = int(input('Enter the number of minutes : ')) #1_000_000_000
 
+#Get years and remaining days
 year = 60 * 24 * 365
 years = minutes // year
 remainingDays = (minutes % year) // (24 * 60)
 
+#Display results
 print(minutes, ' is approximately ', years, ' and ', remainingDays, ' days')
