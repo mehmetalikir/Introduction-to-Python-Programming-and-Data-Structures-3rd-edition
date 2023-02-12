@@ -11,13 +11,16 @@ the following formula:
 a = (v1 - v0) / t
 """
 #Enter the starting velocity in meters/second
-v0 = float(input("Enter the starting velocity in meters/second:\t"))
+v0 = float(input("Enter the starting velocity in meters/second" \
+"for example 5.5:\t"))
 
 #Enter the ending velocity in meters/second
-v1 = float(input("Enter the ending velocity in meters/second:\t"))
+v1 = float(input("Enter the ending velocity in meters/second" \
+"for example 50.9:\t"))
 
 #Enter the time span in seconds
-t = float(input("Enter the time span in seconds:\t"))
+t = float(input("Enter the time span in seconds"\
+"for example 4.5:\t"))
 
 a = (v1 - v0) / t
 
