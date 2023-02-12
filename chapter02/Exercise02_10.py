@@ -3,7 +3,9 @@
 # GitHub: /hidirsezgin, /mehmetalikir
 
 #(Physics: find acceleration)
+#Exercise02_10
 """
+
 A sports car accelerates uniformly from an initial speed u
 to a final speed v over a distance s.
 Find the acceleration a of the car using the following formula:
