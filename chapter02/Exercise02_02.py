@@ -3,16 +3,16 @@
 # GitHub: /hidirsezgin, /mehmetalikir
 
 #Exercise02_01
-''' (Convert km/h to m/s) Write a program that reads a value in kilometers pe hour
-from the console and displays it in meter per second. The general formula for
-the conversion is as follows:'''
-
-# 1 km / 1 h = 1000 m / 3600 s
-
-#Enter sped in km/h
-km_h = int(input("Enter sped in km/h : "))
-result = km_h * (1000 / 3600)
-print(km_h, ' is equal to ', result )
+''' (Compute the volume of a cube)
+Write a program that reads in the side of a cube and computes the area in square meters and volume in cubie meters using the following formulas:
+area = 6 * side * side
+volume = side * side * side'''
+side = float(input("Enter a side of the cube:\t"))
+area = 6 * (side ** 2)
+volume = side ** 3
+print("""
+Area of the cube: {:,.3f}
+Volume of the cube: {:,.3f}""".format(area, volume))
 
 
 
