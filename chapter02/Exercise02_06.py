@@ -2,7 +2,7 @@
 # Email : hidirsezgin@gmail.com, m.kir@student.unsw.edu.au
 # GitHub: /hidirsezgin, /mehmetalikir
 """
-Exercice02_06
+#Exercise02_06
 (Financial application: monetary units)
 To fix the possible loss of accuracy when coverting a float value
 to an int value. For example, the input 1156 represent 11 dollars and 56 cents.
