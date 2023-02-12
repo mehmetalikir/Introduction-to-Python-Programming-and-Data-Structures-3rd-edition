@@ -12,13 +12,14 @@
 
 #Promt the user for input
 finalAccountValue = float(input("Enter final account value: 1000 "))
-monthlyInterestRate = float(input("Enter annual interest rate in percent, for example 8.25: 4.5 "))
+monthlyInterestRate = float(input("Enter annual interest rate in percent, \
+for example 8.25: 4.5 ")) / 100
+monthlyInterestRate /= 12
+
 years = float(input("Enter number of year as an integer,for example 5: 5 "))
 numberOfMonths = years * 12
 
 #Compute initial deposit
-initialDepositAmount = finalAccountValue /\
-                       ((1+monthlyInterestRate)  ** numberOfMonths)
-
+initialDepositAmount = finalAccountValue / (1 + monthlyInterestRate) ** numberOfMonths
 #Display results
 print(initialDepositAmount)
