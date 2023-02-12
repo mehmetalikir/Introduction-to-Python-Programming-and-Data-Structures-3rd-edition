@@ -2,7 +2,7 @@
 # Email : hidirsezgin@gmail.com, m.kir@student.unsw.edu.au
 # GitHub: /hidirsezgin, /mehmetalikir
 
-#Exercise02_01
+#Exercise02_03
 ''' (Convert feet into meters) Write a program that reads a numbe in feet, converts
 it to meters, and then display the result. Once foot is 0.305 meters'''
 
