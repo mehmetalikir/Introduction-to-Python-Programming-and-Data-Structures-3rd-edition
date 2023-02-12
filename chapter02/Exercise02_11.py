@@ -22,4 +22,4 @@ numberOfMonths = years * 12
 #Compute initial deposit
 initialDepositAmount = finalAccountValue / (1 + monthlyInterestRate) ** numberOfMonths
 #Display results
-print(initialDepositAmount)
+print("Initial deposit amount is:",initialDepositAmount)
