@@ -19,6 +19,7 @@ years = float(input("Enter number of year as an integer,for example 5: 5 "))
 numberOfMonths = years * 12
 
 #Compute initial deposit
-initialDepositAmount = finalAccountValue / (1 + monthlyInterestRate) ** numberOfMonths
+initialDepositAmount = finalAccountValue / \
+(1 + monthlyInterestRate) ** numberOfMonths
 #Display results
 print("Initial deposit amount is:",initialDepositAmount)
