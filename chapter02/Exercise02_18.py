@@ -10,10 +10,10 @@ the current time in GMT. Revise the program so that it prompts the user to enter
 the time zone in hours away from (offset to) GMT and displays the time int the 
 specified time zone.'''
 
-"example output  = Current time is 5 : 0 : 19"
+"example output  = Current time is 05 : 0 : 19"
 
 
-offset = float(input("Enter the time one offset to GMT: -5\n"))
+offset = int(input("Enter the time one offset to GMT: -5\n"))
 
 currentTime = time.time() # Get current time
 
@@ -33,7 +33,7 @@ currentMinute = totalMinutes % 60
 totalHours = totalMinutes // 60
 
 # Compute the current hour
-currentHour = (int)(totalHours + offset) % 24
+currentHour = (totalHours + offset) % 24
 
 # Display results
 print("Current time is {:02d}".format(currentHour),
