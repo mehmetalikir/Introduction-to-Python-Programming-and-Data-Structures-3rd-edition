@@ -5,17 +5,19 @@
 import time
 
 #Exercise02_18
-''' (Current time) Listing 2.7, ShowCurrrentTime.py, gives a program that display 
+''' (Current time) Listing 2.7, ShowCurrentTime.py, gives a program that display 
 the current time in GMT. Revise the program so that it prompts the user to enter 
 the time zone in hours away from (offset to) GMT and displays the time int the 
 specified time zone.'''
 
-"Enter the time one offset to GMT: -5"
-"Current time is 5 : 0 : 19"
+"example output  = Current time is 5 : 0 : 19"
+
+
+offset = float(input("Enter the time one offset to GMT: -5\n"))
 
 currentTime = time.time() # Get current time
 
-# Obtain the total sconds since midnight, Jan 1, 1970
+# Obtain the total seconds since midnight, Jan 1, 1970
 totalSeconds = int(currentTime)
 
 # Get the current second
@@ -31,8 +33,8 @@ currentMinute = totalMinutes % 60
 totalHours = totalMinutes // 60
 
 # Compute the current hour
-currentHour = totalHours % 24
+currentHour = (int)(totalHours + offset) % 24
 
 # Display results
-print("Current time is", currentHour,
+print("Current time is {:02d}".format(currentHour),
       ":", currentMinute, ":", currentSecond, "GMT")
