@@ -10,7 +10,7 @@ interest = balance x (annualInterestRate / 1200)
 Write a program that reads the balance and the annual percentage interest rate
  and then displays the interest for the next month. Keep two digits after the decimal point.'''
 
-# Prompt the user for inputs
+# Prompt the user for input
 balance = float(input("Please enter balance: "))  #1000.0
 annualInterestRate = float(input("Please enter annual interest rate: ")) #3.5
 
