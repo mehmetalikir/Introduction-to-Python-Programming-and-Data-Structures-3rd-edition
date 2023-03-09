@@ -21,3 +21,9 @@ if number1 * number2 == answer:
 else:
     print("Your answer is wrong.")
     print(number1, "*", number2, "is", number1 * number2)
+
+
+
+    # # 2. If number1 < number2, swap number1 with number2
+    # if number1 < number2:
+    #     number1, number2 = number2, number1  # Simultaneous assigment *
