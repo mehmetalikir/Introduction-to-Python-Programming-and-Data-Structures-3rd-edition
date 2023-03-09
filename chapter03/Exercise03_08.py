@@ -12,20 +12,22 @@ b = float(input("Please enter number2: "))
 c = float(input("Please enter number3: "))
 
 # Display result after sorting
-if a > b and b > c:
-    print("The sorted numbers in decreasing order are", a, b, c)
-elif a > c and c > b:
-    print("The sorted numbers in decreasing order are", a, c, b)
-elif b > a and b > c:
-    print("The sorted numbers in decreasing order are", b, a, c)
-elif b > c and c > a:
-    print("The sorted numbers in decreasing order are", b, c, a)
-elif c > a and a > b:
-    print("The sorted numbers in decreasing order are", c, a, b)
-elif c > b and b > a:
-    print("The sorted numbers in decreasing order are", c, b, a)
-else:
-    print("Please input valid values")
+temp = 0
+if b > a or c > a:
+    temp = a
+    a = b
+    b = temp
+    if c > a:
+        temp = a
+        a = c
+        c = temp
+if c > b:
+    temp = b
+    b = c
+    c = temp
+
+print("The sorted numbers in decreasing order are", a, b, c)
+
 
 # for increasing order a < b < c , a < c < b , b < a < c, b < c < a, c < a < b, c < b < a
 
