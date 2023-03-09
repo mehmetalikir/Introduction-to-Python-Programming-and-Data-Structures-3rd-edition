@@ -9,19 +9,15 @@ with two integers less than 100.'''
 import random
 
 # 1. Generate two random single-digit integers
-number1 = random.randint(0,9)
-number2 = random.randint(0,9)
+number1 = random.randint(0,100)
+number2 = random.randint(0,100)
 
-# 2. If number1 < number2, swap number1 with number2
-if number1 < number2:
-    number1, number2 = number2, number1 # Simultaneous assigment *
+# 2. Prompt the user to answer "What is number1 - number2?"
+answer = int(input("What is " + str(number1) + " * " + str(number2) + "? "))
 
-# 3. Prompt the user to answer "What is number1 - number2?"
-answer = int(input("What is " + str(number1) + " - " + str(number2) + "? "))
-
-# 4. Grade the answer and display the result
-if number1 - number2 == answer:
+# 3. Grade the answer and display the result
+if number1 * number2 == answer:
     print("You are correct!")
 else:
     print("Your answer is wrong.")
-    print(number1, "-", number2, "is", number1 - number2)
+    print(number1, "*", number2, "is", number1 * number2)
