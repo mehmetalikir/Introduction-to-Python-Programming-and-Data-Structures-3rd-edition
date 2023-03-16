@@ -39,7 +39,7 @@ x4 = math.radians(x4)
 y4 = math.radians(y4)
 
 # Calculate the  distances
-# There is no need to calculate the distance from Atlanta to Savannah, because it is the side that bisects the triangle itself.
+# There is no need to re-calculate the distance from Atlanta to Savannah, because it is the side that bisects the triangle itself.
 ab = RADIUS * math.acos(math.sin(x1) * math.sin(x2) + math.cos(x1) * math.cos(x2) * math.cos(y1 - y2))
 ac = RADIUS * math.acos(math.sin(x1) * math.sin(x3) + math.cos(x1) * math.cos(x3) * math.cos(y1 - y3))
 bc = RADIUS * math.acos(math.sin(x2) * math.sin(x3) + math.cos(x2) * math.cos(x3) * math.cos(y2 - y3))

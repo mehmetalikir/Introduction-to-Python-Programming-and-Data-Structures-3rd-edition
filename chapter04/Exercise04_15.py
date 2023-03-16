@@ -3,3 +3,9 @@
 # GitHub: /hidirsezgin, /mehmetalikir
 
 '''() Write a program that'''
+import  math
+import random
+
+x = random.random() * 2 * math.pi
+
+print(x)
