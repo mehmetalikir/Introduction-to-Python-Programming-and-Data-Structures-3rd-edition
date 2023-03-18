@@ -17,7 +17,7 @@ if len(hexCharacter) != 1:
 
 # Display decimal value for the hex digit
 if 'F' >= ch >= 'A':
-    value = int(ord(ch) - ord('A')) + 10
+    value = (ord(ch) - ord('A')) + 10
     print("The decimal value", ch, " is ", value)
 elif ch.isdigit():
     print("The decimal value", ch, " is ", ch)
