@@ -9,9 +9,9 @@ import math
 number = 0 # Initialize variable
 
 # Display header for table
-print("Inches      Centimeters")
+print("Real number    Cube Root")
 
 # Display table
 while number <= 48:
-    print(number, "         ", round(math.pow(number, 1 / 3), 4))
+    print(number, "            ", round(math.pow(number, 1 / 3), 4))
     number += 4
