@@ -39,5 +39,5 @@ while count < NUMBER_OF_QUESTIONS:
 
 endTime = time.time() # Get the time
 testTime = int(endTime - starTime) # Get test time
-print("Corret count is", correctCount, "out of",
+print("Correct count is", correctCount, "out of",
       NUMBER_OF_QUESTIONS, "\nTest time is", testTime, "seconds")
