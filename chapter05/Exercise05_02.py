@@ -11,14 +11,14 @@ import time
 
 correctCount = 0 # Count the number of correct answers
 count = 0 # Count the number of questions
-NUMBER_OF_QUESTIONS = 5 # Constant
+NUMBER_OF_QUESTIONS = 10 # Constant
 
 starTime = time.time() # Get start time
 
 while count < NUMBER_OF_QUESTIONS:
     # 1. Generate two single-digit integers
-    number1 = random.randint(0,9)
-    number2 = random.randint(0,9)
+    number1 = random.randint(1,15)
+    number2 = random.randint(1,15)
 
     # 2. If number1 < number2, swap number1 with number2
     if number1 < number2:
