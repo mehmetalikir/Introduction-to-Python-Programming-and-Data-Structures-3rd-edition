@@ -5,6 +5,7 @@
 '''(Display four patterns using loops) Use nested loops that display the following
 patterns in four separate programs:'''
 
+
 for i in range(1, 7):
     j = 1
     while j <= i:
@@ -44,6 +45,4 @@ while i <= 8:
         k += 1
     print('')
     i += 1
-
-
 
