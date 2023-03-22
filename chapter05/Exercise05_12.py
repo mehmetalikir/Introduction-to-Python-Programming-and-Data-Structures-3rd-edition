@@ -9,8 +9,10 @@ The numbers are separated by exactly one tab.'''
 # Constant
 PER_LINE = 5
 
+# Assign variable for per line
 count = 0
 
+# Display numbers from 1000 to 50000 that are divisible by 11 and 17
 for i in range(1000, 50000):
     if i % (11 * 17) == 0:
         print(" ", i)
