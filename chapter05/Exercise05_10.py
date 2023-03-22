@@ -6,23 +6,3 @@
 the number of airlines and each airline's name and ticket price. Find the airline
 with the cheapest ticket and display its name and price. Assume that the number
 of airlines is at least 1.'''
-
-# Prompts prompts the user to enter the number of airlines
-numberOfAirlines = int(input("Please enter the number of airlines: "))
-
-# Initialize variables
-highestName = 0
-secondHighestName = 0
-highestPrice = 0
-secondHighestPrice = 0
-
-for i in range(numberOfAirlines):
-    airlineName = (input("Please enter an airline name: "))
-    ticketPrice = int(input("Please enter ticket price: "))
-    if ticketPrice > highestPrice:
-        secondHighestName = highestName
-        secondHighestPrice = highestPrice
-        highestName = airlineName
-        highestPrice = ticketPrice
-
-print(f"Highest price: {highestName}'s ticket price is {highestPrice}")
