@@ -11,15 +11,15 @@ of airlines is at least 1.'''
 numberOfAirlines = int(input("Please enter the number of airlines: "))
 
 # Initialize variables
-highestName = 0
-highestPrice = 1000
+lowestName = 0
+lowestPrice = 1000
 
 
 for i in range(numberOfAirlines):
     airlineName = (input("Please enter an airline name: "))
-    ticketPrice = int(input("Please enter ticket price: "))
-    if ticketPrice < highestPrice:
-        highestName = airlineName
-        highestPrice = ticketPrice
+    ticketPrice = float(input("Please enter ticket price: "))
+    if ticketPrice < lowestPrice:
+        lowestName = airlineName
+        lowestPrice = ticketPrice
 
-print(f"Cheapest airline {highestName}'s ticket price is {highestPrice}")
+print(f"Cheapest airline {lowestName}'s ticket price is {lowestPrice}")
