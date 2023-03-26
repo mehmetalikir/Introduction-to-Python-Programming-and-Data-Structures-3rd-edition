@@ -9,25 +9,19 @@ and displays the monthly and total payments for each interest rate starting from
 import math
 
 # Constant
-ANNUAL_INTEREST_RATE = 5
+ANNUAL_INTEREST_RATE = 5.0
 
 # Prompt the user enter the loan amount and loan period in numbers of years
-amount = float(input("Please enter loan amount, for example 120000.95: "))
+loanAmount = float(input("Please enter loan amount, for example 120000.95: "))
 years = float(input("Please enter number of years as an integer, for example 5: "))
 
 # Format header
-print("%-1s%20s%20s\n" % ("Interest Rate", "Monthly Payment", "Total Payment"))
+print("%-1s%20s%20s" % ("Interest Rate", "Monthly Payment", "Total Payment"))
 
-# Display different interest rates
+# Display result
 while ANNUAL_INTEREST_RATE <= 8:
-
-    # Calculating monthly and total payment rates
-    monthlyInterestRate =  ANNUAL_INTEREST_RATE / 1200
-    monthlyPayment = amount * monthlyInterestRate / (1 - 1 / math.pow(1 + monthlyInterestRate, years * 12))
-
-    totalPayment = monthlyPayment * years * 12
-
-
-    # Display result
-    print("%-1.3f%s%17.2f%24.2f \n" % (ANNUAL_INTEREST_RATE,"%", monthlyPayment, totalPayment))
-    ANNUAL_INTEREST_RATE += 0.125
+    monthlyInterestRate = ANNUAL_INTEREST_RATE / 1200
+    monthlyPayment = loanAmount * monthlyInterestRate / (1
+                                                         - 1 / math.pow(1 + monthlyInterestRate, years * 12))
+    print(f"%-1.3f%s%20.2f%22.2f" % (ANNUAL_INTEREST_RATE, "%", monthlyPayment, (monthlyPayment * 12) * years))
+    ANNUAL_INTEREST_RATE += 1/8
