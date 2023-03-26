@@ -16,9 +16,9 @@ series, computing from left to right and from right to left with n = 50000.'''
 # Constant
 N = 50_000
 
-#
-result = 1
 
+result = 1
+# Display result
 for i in range(N, 1, -1):
     result += 1 / i
 print("Result: ", result)
