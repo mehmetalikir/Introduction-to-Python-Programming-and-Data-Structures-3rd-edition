@@ -7,7 +7,7 @@ from 101 to 2100, separated by exactly one space. Also display the number of
 leap years in this period.'''
 
 # Constant
-PER_LINE =10 * 4
+PER_LINE = 10 * 4
 
 # Assign values
 year = 2001
