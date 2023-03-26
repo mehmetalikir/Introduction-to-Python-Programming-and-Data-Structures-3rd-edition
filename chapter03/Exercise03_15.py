@@ -2,7 +2,7 @@
 # Email : hidirsezgin@gmail.com, m.kir@student.unsw.edu.au
 # GitHub: /hidirsezgin, /mehmetalikir
 
-'''(Game: lottery) Revise Listing 3.8, Lottery.java, to generate a lottery of a threedigit
+'''(Game: lottery) Revise Listing 3.9, Lottery.py, to generate a lottery of a threedigit
 number. The program prompts the user to enter a three-digit number and
 determines whether the user wins according to the following rules:
 1. If the user input matches the lottery number in the exact order, the award is
