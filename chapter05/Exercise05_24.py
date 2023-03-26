@@ -46,3 +46,5 @@ for i in range(1, (years * 12)+1, +1):
     balance = balance - principal
     print(f"%-1d%24.2f%22.2f%22.2f" % ( i, interest,
           principal, balance))
+
+# print( i, "\t\t", interest, "\t\t",principal, "\t\t", balance)
