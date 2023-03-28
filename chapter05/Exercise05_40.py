@@ -6,10 +6,12 @@
 '''(Simulation: heads or tails) Write a program that simulates flipping a coin one
 million times and displays the number of heads and tails.'''
 import random
+import time
 
 # Assign values
 heads = 0
 tails = 0
+startTime = time.time()
 
 # Simulate flipping a coin one billion times
 for i in range(0, 1_000_000_000, +1):
@@ -25,3 +27,4 @@ for i in range(0, 1_000_000_000, +1):
 # Display result
 print("Heads: ", heads)
 print("Tails: ", tails)
+print("Executed in %.2f" % (time.time() - startTime),"seconds")
