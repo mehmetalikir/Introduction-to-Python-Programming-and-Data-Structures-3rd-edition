@@ -23,3 +23,4 @@ while decimal >= 1:
 # Display result
 print(toBinary)
 
+#print(bin(decimal))
