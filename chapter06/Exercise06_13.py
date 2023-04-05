@@ -18,14 +18,14 @@ Write a test program that displays the following table:
 
 def sumSeries():
     mi = 0
-    print("i                m(i)")
+    print("i                m(i)") # Print header of table
     for i in range(1, 20, +1):
-        mi += i / (i + 1)
-        print(f"%-6d%17.4f" % (i, mi))
+        mi += i / (i + 1) # Compute mi
+        print(f"%-6d%17.4f" % (i, mi)) # Display result
 
 
 def main():
-    sumSeries()
+    sumSeries() # Invoke function
 
 
 main()
