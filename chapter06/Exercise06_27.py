@@ -9,9 +9,6 @@ Write a program to find all twin primes less than 1,000. Display the output as f
 (5, 7)
 ....'''
 
-import math
-
-
 # Return the reversal of an integer, i.e. reverse(456) returns 654
 def reverse(number):
     number = str(number)
