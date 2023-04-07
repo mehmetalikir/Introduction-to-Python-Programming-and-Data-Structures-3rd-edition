@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7ef87ae-8ec4-4dac-b31b-1a1864a3214b" name="Changes" comment="Add workspace.xml file">
+    <list default="true" id="d7ef87ae-8ec4-4dac-b31b-1a1864a3214b" name="Changes" comment="Game: craps">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chapter06/Exercise06_28.py" beforeDir="false" afterPath="$PROJECT_DIR$/chapter06/Exercise06_28.py" afterDir="false" />
     </list>
@@ -75,7 +75,7 @@
       <option name="presentableId" value="Default" />
       <updated>1680755532807</updated>
       <workItem from="1680755535628" duration="59000" />
-      <workItem from="1680823114563" duration="1823000" />
+      <workItem from="1680823114563" duration="4547000" />
     </task>
     <task id="LOCAL-00001" summary="Add workspace.xml file">
       <created>1680755564857</created>
@@ -84,7 +84,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680755564858</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Game: craps">
+      <created>1680825572927</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1680825572927</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -103,7 +110,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add workspace.xml file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add workspace.xml file" />
+    <MESSAGE value="Game: craps" />
+    <option name="LAST_COMMIT_MESSAGE" value="Game: craps" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Introduction_to_Python_Programming_and_Data_Structures_3rd_edition$Exercise05_57.coverage" NAME="Exercise05_57 Coverage Results" MODIFIED="1680023124984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/chapter05" />
@@ -125,7 +133,7 @@
     <SUITE FILE_PATH="coverage/Introduction_to_Python_Programming_and_Data_Structures_3rd_edition$Exercise06_14.coverage" NAME="Exercise06_14 Coverage Results" MODIFIED="1680661923786" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/chapter06" />
     <SUITE FILE_PATH="coverage/Introduction_to_Python_Programming_and_Data_Structures_3rd_edition$Exercise05_40.coverage" NAME="Exercise05_40 Coverage Results" MODIFIED="1680012757451" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/chapter05" />
     <SUITE FILE_PATH="coverage/Introduction_to_Python_Programming_and_Data_Structures_3rd_edition$RandomCharacter.coverage" NAME="RandomCharacter Coverage Results" MODIFIED="1680189581808" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/chapter06" />
-    <SUITE FILE_PATH="coverage/Introduction_to_Python_Programming_and_Data_Structures_3rd_edition$Exercise06_28.coverage" NAME="Exercise06_28 Coverage Results" MODIFIED="1680824242957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/chapter06" />
+    <SUITE FILE_PATH="coverage/Introduction_to_Python_Programming_and_Data_Structures_3rd_edition$Exercise06_28.coverage" NAME="Exercise06_28 Coverage Results" MODIFIED="1680827012117" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/chapter06" />
     <SUITE FILE_PATH="coverage/Introduction_to_Python_Programming_and_Data_Structures_3rd_edition$Exercise05_43.coverage" NAME="Exercise05_43 Coverage Results" MODIFIED="1680017415898" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/chapter05" />
     <SUITE FILE_PATH="coverage/Introduction_to_Python_Programming_and_Data_Structures_3rd_edition$Exercise06_11.coverage" NAME="Exercise06_11 Coverage Results" MODIFIED="1680553433993" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/chapter06" />
     <SUITE FILE_PATH="coverage/Introduction_to_Python_Programming_and_Data_Structures_3rd_edition$Exercise05_41.coverage" NAME="Exercise05_41 Coverage Results" MODIFIED="1680014783369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/chapter05" />

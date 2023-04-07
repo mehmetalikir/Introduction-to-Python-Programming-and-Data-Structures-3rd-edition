@@ -16,28 +16,49 @@ import random
 
 def randomDice():
     # Sum of the two random dice
-    dice1 = random.randint(1, 6)
-    dice2 = random.randint(1, 6)
+    dice = random.randint(1, 6)
 
-    return dice1 + dice2
+    return dice
 
 
 def main():
-    sum = randomDice()  # Assign value
+    # Assign values
+    dice1 = randomDice()
+    dice2 = randomDice()
+    sum = dice1 + dice2
 
+    # If the sum is 2, 3, or 12 (called craps), you lose
     if sum == 2 or sum == 3 or sum == 12:
-        print(f"{[sum]} Craps! Sorry, you lose.")
+        print(f"You rolled {dice1} + {dice2} = {sum}")
+        print("Craps! Sorry, you lose.")
+
+    # If the sum is 7 or 11 (called natural), you win
     elif sum == 7 or sum == 11:
-        print(f"{[sum]} Natural! Congratulations, you win.")
+        print(f"You rolled {dice1} + {dice2} = {sum}")
+        print("Natural! Congratulations, you win.")
+
+    # If the sum is another value (i.e., 4, 5, 6, 8, 9, or 10), a point is established
     else:
-        point = sum
+        print(f"You rolled {dice1} + {dice2} = {sum}")
+        print(f"point is {sum}")
+
+        # Continue to roll the dice until either a 7 or the same point value is rolled
         while True:
-            if point == 7:
-                print(f"{[point]} Sorry, you lose")
+            # Assign  new values
+            dice1 = randomDice()
+            dice2 = randomDice()
+            newSum = dice1 + dice2
+
+            # Break to roll
+            if newSum == 7 or newSum == sum:
+                print(f"You rolled {dice1} + {dice2} = {newSum}")
+                print("Sorry, you lose")
                 break
+
+            # Continue to roll
             else:
-                print(f"{[point]} Congratulations, you win.")
-                break
+                print(f"You rolled {dice1} + {dice2} = {newSum}")
+                continue
 
 
 main()
