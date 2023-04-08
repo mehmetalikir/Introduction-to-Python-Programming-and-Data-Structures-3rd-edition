@@ -42,20 +42,26 @@ def main():
         print(f"You rolled {dice1} + {dice2} = {sum}")
         print(f"point is {sum}")
 
-        # Continue to roll the dice until either a 7 or the same point value is rolled
+        # Jump to new rolling and repeat it until 7 or point rolled
         while True:
             # Assign  new values
             dice1 = randomDice()
             dice2 = randomDice()
             newSum = dice1 + dice2
 
-            # Break to roll
-            if newSum == 7 or newSum == sum:
+            # If 7 is rolled, you lose
+            if newSum == 7:
                 print(f"You rolled {dice1} + {dice2} = {newSum}")
                 print("Sorry, you lose")
                 break
 
-            # Continue to roll
+            # Otherwise(point is rolled), you win
+            elif newSum == sum:
+                print(f"You rolled {dice1} + {dice2} = {newSum}")
+                print("Congratulations, you win.")
+                break
+
+            # Continue to roll the dice until either a 7 or the same point value is rolled
             else:
                 print(f"You rolled {dice1} + {dice2} = {newSum}")
                 continue

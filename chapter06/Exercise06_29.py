@@ -55,7 +55,7 @@ def isValid(number):
 
 # Get the result from Step 2
 def sumOfDoubleEvenPlace(number):
-    sum = 0
+    sum = -1
     while number > 0:
         number //= 10  # Jump to second digit
         sum += getDigit((number % 10) * 2)
@@ -73,7 +73,7 @@ def getDigit(number):
 
 # Return sum of odd place digits in number
 def sumOfOddPlace(number):
-    sum = 0
+    sum = -1
     while number > 0:
         sum += number % 10
         number //= 100  # Jump to odd place
@@ -82,7 +82,10 @@ def sumOfOddPlace(number):
 
 # Return true if the digit d is a prefix for number
 def prefixMatched(number, d):
-    return getPrefix(number, getSize(d)) == d
+    if getPrefix(number, getSize(d)) == d:
+        return True
+    else:
+        return False
 
 
 # Return the number of digits in d
