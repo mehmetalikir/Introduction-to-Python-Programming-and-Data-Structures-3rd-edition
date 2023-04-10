@@ -21,10 +21,8 @@ def main():
         key = chr(ord(s[i].upper()))  # Convert str to uppercase and unicode-ord then chr value
 
         # Display result
-        if 'A' <= key <= 'Z':
-            print(getNumber(key), end="")  # Invoke function
-        else:
-            print(key, end="")
+        print(getNumber(key), end="")  # Invoke function
+
 
 
 def getNumber(uppercaseLetter):
