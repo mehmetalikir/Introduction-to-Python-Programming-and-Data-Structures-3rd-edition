@@ -20,7 +20,7 @@ def printMonth(year, month):
 def printMonthTitle(year, month):
     print("         ", getMonthName(month), " ", year)
     print("------------------------------")
-    print(" Sun Mon Tue Wed Fri Sat")
+    print("     Sun Mon Tue Wed Fri Sat")
 
 # Print month body
 def printMonthBody(year, month):
