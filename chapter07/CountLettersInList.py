@@ -25,7 +25,7 @@ def main():
 
 # Create a list of characters
 def createList():
-    # Create an emty list
+    # Create an empty list
     chars = []
 
     # Create lowercase letters randomly and add them to the list
