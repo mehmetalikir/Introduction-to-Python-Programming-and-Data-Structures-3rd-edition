@@ -56,6 +56,7 @@ def countLetters(chars):
 
     return counts
 
+# Display counts
 def displayCounts(counts):
     for i in range(len(counts)):
         if (i + 1) % 10 == 0:
