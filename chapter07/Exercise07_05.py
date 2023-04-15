@@ -39,7 +39,7 @@ def createList():
 # Display distinct numbers
 def copyList(list1, list2):
 
-    # Copy of list1 into list2 If the number is already in the list, ignore it
+    # Copy of list1 into list2
     for i in range(len(list1)):
         addDistinct(list1[i], list2)
 
@@ -51,7 +51,7 @@ def copyList(list1, list2):
     # list2 = [x for x in list1] or list2 = [] + list1 or list2 = list1[ : ]
 
 
-# Add distinct numbers into new list
+# Add distinct numbers into new list If the number is already in the list, ignore it
 def addDistinct(x, lst):
     if x not in lst:
         lst.append(x)
