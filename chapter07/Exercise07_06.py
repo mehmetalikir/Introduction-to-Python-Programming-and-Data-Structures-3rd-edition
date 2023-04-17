@@ -17,15 +17,9 @@ def main():
     # Create a list
     list1 = createList(NUMBER_OF_PRIMES)
 
-    count = 0  # Count the number of prime numbers
-    n = 2  # A number to be tested for primeness
+    # Find prime numbers
+    findPrimes(list1)
 
-    # Repeatedly find prime numbers
-    while count < NUMBER_OF_PRIMES:
-        if isPrime(n):
-            list1[count] = n
-            count += 1  # Increase the count
-        n += 1
 
     # Display the list
     print("The first 50 prime numbers are:")
@@ -38,6 +32,19 @@ def createList(NUMBER_OF_PRIMES):
 
     # Return the list
     return list1
+
+# Find prime numbers
+def findPrimes(list1):
+    count = 0  # Count the number of prime numbers
+    n = 2  # A number to be tested for primeness
+
+    # Repeatedly find prime numbers
+    while count < NUMBER_OF_PRIMES:
+        if isPrime(n):
+            list1[count] = n
+            count += 1  # Increase the count
+        n += 1
+    return n
 
 
 # Display the list
