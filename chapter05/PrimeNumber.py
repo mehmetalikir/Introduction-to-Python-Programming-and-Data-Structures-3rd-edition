@@ -33,5 +33,5 @@ while count < NUMBER_OF_PRIMES:
         if count % NUMBER_OF_PRIMES_PER_LINE == 0:
             # Display the number and advance to the new line
             print() # Jump to the new line
-            # Check if the next number is prome
+            # Check if the next number is prime
     number += 1
