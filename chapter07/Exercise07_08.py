@@ -25,7 +25,7 @@ def main():
 
 def createList():
     # Prompt the user to enter a list of  numbers
-    s = input("Please enter a list of number: ")
+    s = input("Please enter scores in a line: ")
 
     list1 = [int(x) for x in s.split(" ")]
 
