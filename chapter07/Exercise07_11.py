@@ -17,7 +17,7 @@ def main():
     # Create a list of numbers
     lst = createList()
 
-    # Displays the mean and standard deviation
+    # Displays the numbers
     displayResult(lst)
 
 
