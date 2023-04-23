@@ -17,7 +17,7 @@ def main():
     s1 = input("Please enter integers for list1: ")
     s2 = input("Please enter integers for list2: ")
     list1 = [int(x) for x in s1.split(" ")]  # 5 21 55 62 71 76
-    list2 = [int(x) for x in s1.split(" ")]  # 5 12 15 16 21 26
+    list2 = [int(x) for x in s2.split(" ")]  # 5 12 15 16 21 26
 
     # Displays the merged list
     print("The merged list is ", end=""), merge(list1, list2)
