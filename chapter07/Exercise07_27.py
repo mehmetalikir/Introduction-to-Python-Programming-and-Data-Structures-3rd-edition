@@ -11,7 +11,8 @@ Write a test program that prompts the user to enter a string and reports whether
 contains consecutive characters or not.'''
 
 def main():
-    s = input("Please enter s string: ")
+    # Prompt the user to enter a string
+    s = input("Please enter a string: ")
     if hasConsecutiveChar(s):
         print("The string has consecutive characters")
     else:
