@@ -18,17 +18,18 @@ enter a list in one line and displays the list after the partition.'''
 
 def main():
     # Prompt the user to enter list of numbers
-    s = input("Please enter numbers: ")  # 5, 2, 9, 3, 6, 8
+    s = input("Please enter an integer list: ")  # 5, 2, 9, 3, 6, 8
     lst = [int(x) for x in s.split(",")]
 
     # Display the list after the partition
-    print(partition(lst))
+    print("After the partition, the list is", partition(lst))
+
 
 # Partition the list using the pivot
 def partition(lst):
     for i in range(0, len(lst) - 1):
         if lst[i] < lst[0]:
-            lst[i +1], lst[0] = lst[0], lst[i + 1]
+            lst[i + 1], lst[0] = lst[0], lst[i + 1]
 
     return lst
 
