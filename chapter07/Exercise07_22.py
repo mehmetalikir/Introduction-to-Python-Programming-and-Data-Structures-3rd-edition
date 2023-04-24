@@ -54,9 +54,8 @@ def getCard(randomCard):
 
 
 def getRandom():
-    return random.randint(0, 52)
+    return random.randint(0, 51)
 
 
 main()  # Invoke main function
 
-# TO-DO -> IndexError: list index out of range {suitCount[randomCard // 13] == 0}
