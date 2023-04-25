@@ -3,7 +3,7 @@
  
  For introductory courses in Python Programming and Data Structures.
 
-![pearson](http://www.bibdsl.co.uk/imagegallery2/publisher/batch3776/9781292424125.jpg)
+![pearson](https://raw.githubusercontent.com/mehmetalikir/Introduction-to-Python-Programming-and-Data-Structures-3rd-edition/main/.idea/Introduction%20to%20Python%E2%84%A2%20Programming%20and%20Data%20Structures%203rd%20edition.jpg)
 
 A fundamentals first approach to programming helps students create efficient, elegant code 
 
@@ -12,3 +12,5 @@ Revel™ Introduction to Python Programming and Data Structures introduces stude
 
 
 Revel is Pearson's newest way of delivering our respected content. Fully digital and highly engaging, Revel replaces the textbook and gives students everything they need for the course. Informed by extensive research on how people read, think, and learn, Revel is an interactive learning environment that enables students to read, practice, and study in one continuous experience — for less than the cost of a traditional textbook.
+
+![pearson](https://raw.githubusercontent.com/mehmetalikir/Introduction-to-Python-Programming-and-Data-Structures-3rd-edition/main/.idea/BRIEF%20CONTENTS.jpg)
