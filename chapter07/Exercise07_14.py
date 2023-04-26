@@ -12,11 +12,11 @@ entered in one line, invokes the function, and displays the sorted numbers.'''
 # The function for sorting elements in descending order
 def selectionSort(lst):
     for i in range(len(lst) - 1):
-        # Find the minimum in the lst[i : len(lst)]
+        # Find the maximum in the lst[i : len(lst)]
         currentMax = max(lst[i:])
         currentMaxIndex = i + lst[i:].index(currentMax)
 
-        # Swap lst[i] with lst[currentMinIndex] if necessary
+        # Swap lst[i] with lst[currentMaxIndex] if necessary
         if currentMaxIndex != 1:
             lst[currentMaxIndex], lst[i] = lst[i], currentMax
 
