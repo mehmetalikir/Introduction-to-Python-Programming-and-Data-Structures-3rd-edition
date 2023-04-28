@@ -28,6 +28,7 @@ their product.
 
 
 def main():
+    # Prompt the user to enter values
     s1 = (input(f"Please enter a 3-by-3 matrix1: "))  # 1 2 3 4 5 6 7 8 9
     a = getMatrix(s1)  # Get a list
     s2 = (input(f"Please enter a 3-by-3 matrix2: "))  # 0.0 2.0 4.0 1.0 4.5 2.2 1.1 4.3 5.2
@@ -63,7 +64,7 @@ def getMatrix(s):
     numberOfColumns = 3
     index = 0
 
-    # Prompt the user to enter values
+    # Extract values from input
     for row in range(numberOfRows):
         matrix.append([])
         for column in range(numberOfColumns):
