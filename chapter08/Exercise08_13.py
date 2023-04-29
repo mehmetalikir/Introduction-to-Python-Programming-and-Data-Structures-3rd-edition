@@ -43,14 +43,14 @@ def locateSmallest(a):
     indexCol = 0
 
     # Find the smallest element and its indices
-    for i in range(len(a)):
-        for j in range(len(a)):
+    for i in range(len(a[0])):
+        for j in range(len(a[0])):
             if a[i][j] < smallest:
                 smallest = a[i][j]  # Swap it
                 indexRow = i
                 indexCol = j
 
-    print(f"The location of the smallest{smallest} element is at ({indexRow},{indexCol})")
+    print(f"The location of the smallest element ({smallest}) is at ({indexRow},{indexCol})")
 
 
 main()  # Invoke main function
