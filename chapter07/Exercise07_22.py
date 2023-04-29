@@ -54,6 +54,7 @@ def getCard(randomCard):
 
 
 def getRandom():
+
     return random.randint(0, 51)
 
 
