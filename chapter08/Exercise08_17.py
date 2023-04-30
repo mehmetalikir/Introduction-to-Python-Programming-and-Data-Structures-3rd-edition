@@ -40,13 +40,29 @@ unsafe. After bank 3 becomes unsafe, the total assets of bank 1 fall below the l
 borrowers[i][j] indicates the loan that bank i loans to bank j. Once bank j
 becomes unsafe, borrowers[i][j] should be set to 0.)'''
 
+# Constant
+LIMIT = 201
+BANKNUMBERS = 5
+
 
 def main():
-    pass
+    # Create a new list
+    bankBalance = [25, 125, 175, 75, 181]
+    bankLoan = [426, 40, 200, 125, 125]
+
+    mergedList = [sum(i) for i in zip(bankBalance, bankLoan)]
+
+    m2 = [list(a) for a in zip(bankBalance, bankLoan)]
+
+    print(m2)
+
+    print("Unsafe bank are ", end=""), loan(mergedList)
 
 
-def getIt():
-    pass
+def loan(lst):
+    for i in range(len(lst)):
+        if lst[i] < 201:
+            print(i, end=" ")
 
 
 main()  # Invoke main function

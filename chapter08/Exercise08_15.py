@@ -53,7 +53,7 @@ def displayResult(lst):
 
 
 # Return true if point (x2, y2) is on the same line from (x0, y0) to (x1, y1)
-def sameLine(lst): # TO-DO
+def sameLine(lst):  # TO-DO
     for i in range(N):
         for j in range(N):
             if isOnTheSameLine(lst[i][0], lst[i][1],
@@ -73,3 +73,5 @@ def isOnTheSameLine(x0, y0, x1, y1, x2, y2, x3, y3, x4, y4):
 
 
 main()  # Invoke main function
+
+# mergedList =  [sum(i) for i in zip(x,y)]
