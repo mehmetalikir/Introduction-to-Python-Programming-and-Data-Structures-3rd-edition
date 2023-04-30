@@ -10,13 +10,18 @@ using the following header:
 Write a test program that shuffles the following matrix:
     m = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10]]'''
 
+import random
+
 
 def main():
-    pass
+    nlist = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10]]
+    pickSample(nlist)
+
+    print(pickSample(nlist))
 
 
-def getIt():
-    pass
+def pickSample(m):
+    return random.sample(m, 3)
 
 
 main()  # Invoke main function
