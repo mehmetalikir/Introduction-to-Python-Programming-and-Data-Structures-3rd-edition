@@ -9,11 +9,118 @@ of the solutions. Display two solutions if multiple solutions exist.'''
 
 
 def main():
-    pass
+    # Create a Sudoku puzzle
+    grid = grid = [[3, 0, 6, 5, 0, 8, 4, 0, 0],
+                   [5, 2, 0, 0, 0, 0, 0, 0, 0],
+                   [0, 8, 7, 0, 0, 0, 0, 3, 1],
+                   [0, 0, 3, 0, 1, 0, 0, 8, 0],
+                   [9, 0, 0, 8, 6, 3, 0, 0, 5],
+                   [0, 5, 0, 0, 9, 0, 6, 0, 0],
+                   [1, 3, 0, 0, 0, 0, 2, 5, 0],
+                   [0, 0, 0, 0, 0, 0, 0, 7, 4],
+                   [0, 0, 5, 2, 0, 6, 3, 0, 0]]
+
+    if not isValidGrid(grid):
+        print("Invalid input")
+    elif search(grid):
+        print("The solution is found:")
+        printGrid(grid)
+    else:
+        print("No solution")
+
+    return 0
 
 
-def getIt():
-    pass
+# Obtain a list of free cells from the puzzle
+def getFreeCellList(grid):
+    freeCellList = []
+    for i in range(9):
+        for j in range(9):
+            if grid[i][j] == 0:
+                freeCellList.append([i, j])
+
+    return freeCellList
+
+
+# Display the values in the grid
+def printGrid(grid):
+    for i in range(9):
+        for j in range(9):
+            print(grid[i][j], end=" ")
+        print()
+
+
+# Search for a solution
+def search(grid):
+    freeCellList = getFreeCellList(grid)
+    numberOfFreeCells = len(freeCellList)
+    if numberOfFreeCells == 0:
+        return True  # No free cells
+
+    k = 0  # Start from the first free cell
+    while True:
+        i = freeCellList[k][0]
+        j = freeCellList[k][1]
+        if grid[i][j] == 0:
+            grid[i][j] = 1  # Fill the free cell with number 1
+
+        if isValid(i, j, grid):
+            if k + 1 == numberOfFreeCells:
+                # No more free cells
+                return True  # A solution is found
+            else:
+                # Move to the next free cell
+                k += 1
+        elif grid[i][j] < 9:
+            # Fill the free cell with the next possible value
+            grid[i][j] = grid[i][j] + 1
+        else:
+            # grid[i][j] is 9, backtrack
+            while grid[i][j] == 9:
+                if k == 0:
+                    return False  # No possible value
+                grid[i][j] = 0  # Reset to free cell
+                k -= 1  # Backtrack to the preceding free cell
+                i = freeCellList[k][0]
+                j = freeCellList[k][1]
+
+            # Fill the free cell with the next possible value,
+            # search continues from this free cell at k
+            grid[i][j] = grid[i][j] + 1
+
+    return True  # A solution is found
+
+
+# Check whether grid[i][j] is valid in the grid
+def isValid(i, j, grid):
+    # Check whether grid[i][j] is valid at the i's row
+    for column in range(9):
+        if column != j and grid[i][column] == grid[i][j]:
+            return False
+
+    # Check whether grid[i][j] is valid at the j's column
+    for row in range(9):
+        if row != i and grid[row][j] == grid[i][j]:
+            return False
+
+    # Check whether grid[i][j] is valid in the 3-by-3 box
+    for row in range((i // 3) * 3, (i // 3) * 3 + 3):
+        for col in range((j // 3) * 3, (j // 3) * 3 + 3):
+            if row != i and col != j and grid[row][col] == grid[i][j]:
+                return False
+
+    return True  # The current value at grid[i][j] is valid
+
+
+# Check whether the fixed cells are valid in the grid
+def isValidGrid(grid):
+    for i in range(9):
+        for j in range(9):
+            if grid[i][j] < 0 or grid[i][j] > 9 or \
+                    (grid[i][j] != 0 and not isValid(i, j, grid)):
+                return False
+
+    return True  # The fixed cells are valid
 
 
 main()  # Invoke main function
