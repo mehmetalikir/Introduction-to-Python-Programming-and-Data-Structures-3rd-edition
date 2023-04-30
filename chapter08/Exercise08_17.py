@@ -42,7 +42,6 @@ becomes unsafe, borrowers[i][j] should be set to 0.)'''
 
 # Constant
 LIMIT = 201
-BANKNUMBERS = 5
 
 
 def main():
@@ -52,16 +51,12 @@ def main():
 
     mergedList = [sum(i) for i in zip(bankBalance, bankLoan)]
 
-    m2 = [list(a) for a in zip(bankBalance, bankLoan)]
-
-    print(m2)
-
     print("Unsafe bank are ", end=""), loan(mergedList)
 
 
 def loan(lst):
     for i in range(len(lst)):
-        if lst[i] < 201:
+        if lst[i] < LIMIT:
             print(i, end=" ")
 
 
