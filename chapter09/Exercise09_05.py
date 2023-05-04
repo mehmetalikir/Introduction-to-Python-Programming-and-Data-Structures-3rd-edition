@@ -84,8 +84,8 @@ def main():
 
     # Create a Car object
     print("Object 2")
-    rp0 = RegularPolygon(10, 4, 5.6, 7.8)
-    displayProperties(rp0)
+    rp1 = RegularPolygon(10, 4, 5.6, 7.8)
+    displayProperties(rp1)
 
 
 main()  # Call the main function
