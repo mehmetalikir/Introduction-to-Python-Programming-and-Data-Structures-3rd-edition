@@ -51,8 +51,9 @@ class MainGUI:
 
     # Display a string
     def displayString(self):
-        self.canvas.create_text(100, 50, text="welcome")
-
+        # Assign value to move text
+        y = 50
+        self.canvas.create_text(100, y, text="welcome")
 
     # Get color
     def getColor(self):
