@@ -41,7 +41,7 @@ class MainGUI:
         # Constant
         ANNUAL_INTEREST_RATE = 5.0
 
-        # Prompt the user enter the loan amount and loan period in numbers of years
+        # Assign values
         loanAmount = float(self.loanAmount.get())
         years = float(self.years.get())
 
