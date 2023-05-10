@@ -14,7 +14,8 @@ and whether the result of the expression is correct. Display the verification in
 box. You can click the Refresh button to get another set of four cards. Assume that
 images are stored in files named 1.gif, 2.gif, ..., 52.gif, in the order of spades, hearts,
 diamonds, and clubs. So, the first 13 images are for spades 1, 2, 3, ..., and 13.'''
-from random import randint
+import tkinter.messagebox
+from random import shuffle
 from tkinter import *  # Import tkinter
 
 
@@ -23,31 +24,54 @@ class MainGUI:
     def __init__(self):
         window = Tk()  # Create a window
         window.title("24-Point Game")  # Set a title
+        frame = Frame(window)  # Hold four labels for cards
+        frame.pack()
 
-        img = PhotoImage(file=f"image/cards/{randint(1, 52)}.png")
-        Label(window, image=img).grid(row=1, column=1)
-        img1 = PhotoImage(file=f"image/cards/{randint(1, 52)}.png")
-        Label(window, image=img1).grid(row=1, column=2)
-        img2 = PhotoImage(file=f"image/cards/{randint(1, 52)}.png")
-        Label(window, image=img2).grid(row=1, column=3)
-        img3 = PhotoImage(file=f"image/cards/{randint(1, 52)}.png")
-        Label(window, image=img3).grid(row=1, column=4)
+        self.imageList = []  # Store images for cards
+        for i in range(1, 53):
+            self.imageList.append(PhotoImage(file="image/cards/"
+                                                  + str(i) + ".png"))
 
-        Label(window, text="Enter an expression").grid(row=2, column=1)
+        self.labelList = []  # A list of four labels
 
+        for i in range(4):
+            self.labelList.append(Label(frame,
+                                        image=self.imageList[i]))
+            self.labelList[i].pack(side=LEFT)
+
+        Button(window, text="Refresh", command=self.refresh).pack()
+
+        frame1 = Frame(window)
+        frame1.pack()
+        Label(frame1, text="Please enter an expression").pack(side=LEFT)
         self.expression = StringVar()
-        Entry(window, textvariable=self.expression).grid(row=2, column=2)
-
-        Button(window, text="Verify", command=self.computeExpression).grid(row=2, column=4, sticky=E)
+        Entry(frame1, textvariable=self.expression).pack(side=LEFT)
+        Button(frame1, text="Verify", command=self.verify).pack(side=RIGHT)  # Verify
 
         window.mainloop()  # Create an event loop
 
+    # Choose four random cards
     def refresh(self):
-        pass
+        # Assign value
+        self.calculateCardValues = 0
 
-    def computeExpression(self):
-        pass
+        shuffle(self.imageList)  # Shuffle list
+        for i in range(4):
+            self.labelList[i]["image"] = self.imageList[i]
+
+            self.calculateCardValues = 0
+
+    def verify(self):
+        # Assign value
+        calculateEntryValues = 0
+
+        # Get the input from the entry
+        entryValue = str(self.expression.get())
+
+        if calculateEntryValues == self.calculateCardValues:
+            tkinter.messagebox.showinfo("Correct", "You'Ve Got It")
+        else:
+            tkinter.messagebox.showerror("Incorrect", "Please ty it again")
 
 
-
-MainGUI()  # Call the main function
+MainGUI()  # Create GUI
