@@ -46,8 +46,8 @@ class MainGUI:
     def solve(self):
         a = self.entries
         # Find consecutive fours in the rows, columns, and diagonal
-        for i in range(9):
-            for j in range(9):
+        for i in range(C):
+            for j in range(C):
                 if self.isConsecutiveFour(a, C):
                     self.entries[i][j]["bg"] = "yellow"
 
@@ -67,9 +67,9 @@ class MainGUI:
             for j in range(4):
                 if a[i][0] == a[j]:  # Check whether row has not same values
                     count += 1
-                    if count == 4:
-                        return True
-        return False
+            if count == 4:
+                return True
+            return False
 
     # Check columns
     def isSameOnAColumn(self, a, n):
@@ -79,9 +79,8 @@ class MainGUI:
             for j in range(1, len(a) - 1):
                 if a[0][j] == a[i + 1][j]:  # Check whether column has not same values
                     count += 1
-
-        if count == N:
-            return True
+                    if count == N:
+                        return True
         return False
 
     # Check major diagonal
@@ -110,7 +109,6 @@ class MainGUI:
 
 
 MainGUI()  # Call the main function
-
 
 #
 # # Assign value
