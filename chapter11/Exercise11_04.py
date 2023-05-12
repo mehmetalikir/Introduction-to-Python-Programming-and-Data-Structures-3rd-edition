@@ -2,34 +2,30 @@
 # Email : hidirsezgin@gmail.com, m.kir@student.unsw.edu.au
 # GitHub: /hidirsezgin, /mehmetalikir
 
-'''() Write a program that'''
+'''(Draw dots using mouse click) Write a program that draws dot on the location of
+the mouse pointer location when the mouse is clicked(see Figure 11.16a-b).'''
 
 from tkinter import *  # Import tkinter
 
+width = 220
+height = 100
 
-class MainGUI:
+
+class DrawDots:
     def __init__(self):
         window = Tk()  # Create a window
-        window.title("")  # Set title
+        window.title("Draw Dots")  # Set a title
 
-        # Place self.canvas in the window
-        self.canvas = Canvas(window, width=400, height=200,
-                             bg="white")
+        self.canvas = Canvas(window, bg="white", width=width, height=height)
         self.canvas.pack()
 
-        # Create object
-        self.object = self.canvas.create_object
-
-        # Place buttons in frame
-        frame = Frame(window)
-        frame.pack()
-
-        Button(frame, text="", command=self.function).pack(side=LEFT)
+        # Bind canvas with mouse events
+        self.canvas.bind("<Button-1>", self.displayPosition)
 
         window.mainloop()  # Create an event loop
 
-    def function(self):
-        self.canvas.does()
+    def displayPosition(self, event):
+        self.canvas.create_oval(event.x, event.y, event.x - 5, event.y - 5, fill="red")
 
 
-MainGUI()  # Call the main function
+DrawDots()

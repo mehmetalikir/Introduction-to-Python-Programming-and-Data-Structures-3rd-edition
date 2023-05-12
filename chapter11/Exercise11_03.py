@@ -15,7 +15,7 @@ height = 100
 class SwapColor:
     def __init__(self):
         window = Tk()  # Create a window
-        window.title("Draw Dots")  # Set a title
+        window.title("Set Colors")  # Set a title
 
         self.canvas = Canvas(window, bg="white", width=width, height=height)
         self.canvas.pack()
