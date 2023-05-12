@@ -2,34 +2,41 @@
 # Email : hidirsezgin@gmail.com, m.kir@student.unsw.edu.au
 # GitHub: /hidirsezgin, /mehmetalikir
 
-'''() Write a program that'''
-
+'''(Move line using the arrow keys) Write a program that moves a line segment using
+the arrow keys. Initially, the line positioned horizontally at the center of the frame
+ and moves toward right, up, left or down when the right arrow key, Up arrow key,
+ Left arrow key, or Down key is pressed, as shown in Figure 11.16c.'''
 from tkinter import *  # Import tkinter
 
 
-class MainGUI:
+class MouseKeyEventDemo:
     def __init__(self):
         window = Tk()  # Create a window
-        window.title("")  # Set title
-
-        # Place self.canvas in the window
-        self.canvas = Canvas(window, width=400, height=200,
-                             bg="white")
+        window.title("Arrow Keys")  # Set a title
+        self.canvas = Canvas(window, bg="white", width=250, height=250)
         self.canvas.pack()
 
-        # Create object
-        self.object = self.canvas.create_object
+        self.canvas.create_line(10, 125, 100, 125, tags="line")
 
-        # Place buttons in frame
-        frame = Frame(window)
-        frame.pack()
-
-        Button(frame, text="", command=self.function).pack(side=LEFT)
+        # Bind with <Key> event
+        self.canvas.bind("<Key>", self.processKeyEvent)
+        self.canvas.focus_set()
 
         window.mainloop()  # Create an event loop
 
-    def function(self):
-        self.canvas.does()
+    def processKeyEvent(self, event):
+        if event.keysym == "Left":
+            self.canvas.move("line", -20, 0)  # Move line
+            self.canvas.update()  # Update canvas
+        if event.keysym == "Right":
+            self.canvas.move("line", 20, 0)  # Move line
+            self.canvas.update()  # Update canvas
+        if event.keysym == "Up":
+            self.canvas.move("line", 0, -20)  # Move line
+            self.canvas.update()  # Update canvas
+        if event.keysym == "Down":
+            self.canvas.move("line", 0, 20)  # Move line
+            self.canvas.update()  # Update canvas
 
 
-MainGUI()  # Call the main function
+MouseKeyEventDemo()  # Create GUI
