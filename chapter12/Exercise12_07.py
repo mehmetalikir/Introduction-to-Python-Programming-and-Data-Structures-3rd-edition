@@ -65,19 +65,19 @@ def mouseMoved(event):
     if r1.containsPoint(event.x, event.y):
         r1.setWidth(event.x)
         r1.setHeight(event.y)
-        displayCircle(r1, "c1")
+        displayCircle(r1, "r1")
         if r1.overlaps(r2):
-            label["text"] = "Two circles intersect"
+            label["text"] = "Two rectangles intersect"
         else:
-            label["text"] = "Two circles don't intersect"
+            label["text"] = "Two rectangles don't intersect"
     elif r2.containsPoint(event.x, event.y):
         r2.setWidth(event.x)
         r2.setHeight(event.y)
-        displayCircle(r2, "c2")
+        displayCircle(r2, "r2")
         if r1.overlaps(r2):
-            label["text"] = "Two circles intersect"
+            label["text"] = "Two rectangles intersect"
         else:
-            label["text"] = "Two circles don't intersect"
+            label["text"] = "Two rectangles don't intersect"
 
 
 window = Tk()  # Create a window
