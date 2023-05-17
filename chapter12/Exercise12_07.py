@@ -55,7 +55,7 @@ class Rectangle2D:
                abs(self.y - r.y) <= (self.height + r.height) / 2
 
 
-def displayCircle(r, text):
+def displayRectangle(r, text):
     canvas.delete(text)
     canvas.create_rectangle(r.x, r.y, r.width, r.height, tags=text)
     canvas.create_text(r.x, r.y, text=text, tags=text)
@@ -65,7 +65,7 @@ def mouseMoved(event):
     if r1.containsPoint(event.x, event.y):
         r1.setWidth(event.x)
         r1.setHeight(event.y)
-        displayCircle(r1, "r1")
+        displayRectangle(r1, "r1")
         if r1.overlaps(r2):
             label["text"] = "Two rectangles intersect"
         else:
@@ -73,7 +73,7 @@ def mouseMoved(event):
     elif r2.containsPoint(event.x, event.y):
         r2.setWidth(event.x)
         r2.setHeight(event.y)
-        displayCircle(r2, "r2")
+        displayRectangle(r2, "r2")
         if r1.overlaps(r2):
             label["text"] = "Two rectangles intersect"
         else:
@@ -81,11 +81,11 @@ def mouseMoved(event):
 
 
 window = Tk()  # Create a window
-window.title("Two Circles")  # Set title
+window.title("Two Rectangle")  # Set title
 
 width = 300
 height = 100
-label = Label(window, text="Two circles intersect")
+label = Label(window, text="Two rectangle intersect")
 label.pack()
 canvas = Canvas(window, width=width, height=height)
 canvas.pack()
@@ -93,7 +93,7 @@ canvas.pack()
 canvas.bind("<B1-Motion>", mouseMoved)
 r1 = Rectangle2D(50, 50, 100, 60)
 r2 = Rectangle2D(50, 50, 60, 100)
-displayCircle(r1, "r1")
-displayCircle(r2, "r2")
+displayRectangle(r1, "r1")
+displayRectangle(r2, "r2")
 
 window.mainloop()  # Create an event loop
