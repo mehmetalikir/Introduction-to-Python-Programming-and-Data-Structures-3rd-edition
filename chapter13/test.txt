@@ -1,0 +1,4 @@
+Hi there
+We are creating a new file
+Some new text
+More new text
