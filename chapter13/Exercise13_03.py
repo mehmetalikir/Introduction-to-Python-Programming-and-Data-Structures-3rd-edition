@@ -24,6 +24,7 @@ def main():
         total += numbers[i]
 
     print()
+    print(f"There are {len(numbers)} scores")
     print(f"Total: {total} and Average: %0.2f" % (total / len(numbers)))
 
 
