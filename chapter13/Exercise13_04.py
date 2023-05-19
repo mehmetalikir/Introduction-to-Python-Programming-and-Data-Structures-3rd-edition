@@ -37,7 +37,7 @@ def main():
     for i in range(len(numbers)):
         print(numbers[i], end=" ")
 
-    inputFile.close()  # Close the output file
+    inputFile.close()  # Close the input file
 
 
 main()
