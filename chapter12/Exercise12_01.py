@@ -39,7 +39,8 @@ def main():
 
     rectangle = Rectangle(width=width, height=height)
     rectangle.setColor(color)
-    rectangle.setFilled(filled)
+    isFilled = (filled == 1)
+    rectangle.setFilled(isFilled)
 
     print(rectangle)
     print("The area is", rectangle.getArea())
