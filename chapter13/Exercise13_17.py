@@ -20,27 +20,21 @@ import urllib.request
 
 def main():
     # Prompt the user to enter the year, gender and name
-    year = 2010#input("Please enter the year:")
-    # gender = input("Please enter the gender:")
-    # name = input("Please enter the name:")
+    year = 2010  # input("Please enter the year:")
+    gender = 'M'  # input("Please enter the gender:")
+    name = "Alex"  # input("Please enter the name:")
     url = f"https://liveexample.pearsoncmg.com/data/babynameranking{year}.txt".strip()
 
     # Create input file from url
+
     inputFile = urllib.request.urlopen(url)
+    for line in inputFile:
+        items = line.strip().split()
 
-    numberOfVertices = str(inputFile.readline().decode())  # Read the first line from the file
-    print(numberOfVertices)
-
-    males = []
-    females = []
-    for i in range(len(numberOfVertices)):
-        items = inputFile.readline().strip().split()  # Read the info for one vertex
-        males.append([int(items[0]), str(items[1]), str(items[2])])
-        for j in range(3, len(items)):
-            females.append([int(items[0]), str(items[1]), str(items[2])])
-
-    print(males)
-    print(females)
+        if gender == 'M' and items[1] == name:
+            print(f"Boy name {name} is ranked #{items[0]} in year {year}")
+        if gender == 'F' and items[3] == name:
+            print(f"Girl name {name} is ranked #{items[0]} in year {year}")
 
     inputFile.close()  # Close the input file
 
