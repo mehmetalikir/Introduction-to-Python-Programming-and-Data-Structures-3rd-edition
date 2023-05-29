@@ -9,43 +9,67 @@ box, as shown in Figure 14.3b. The file selected is then displayed in the entry
 field. Clicking the Show Result button displays the result in a text widget. You
 need to display a message in a message box if the file does not exist.'''
 
-
-def main():
-    # Prompt the user to enter a file
-    filename = input("Please enter a filename to read: ").strip()
-    inputFile = open(filename, "r")  # Open the file
-
-    wordCounts = {}  # Create an empty dictionary to count words
-    for line in inputFile:
-        processLine(line.lower(), wordCounts)
-    inputFile.close()
-
-    pairs = list(wordCounts.items())  # Get pairs from the dictionary
-
-    items = [[count, word] for (word, count) in pairs]
-    items.sort(reverse=True)  # Sort pairs in items
-
-    for count, word in items[: 10]:  # Slice the first 10 items
-        print(word, count, sep='\t')
-
-# Count each word in the line
-def processLine(line, wordCounts):
-    line = replacePunctuation(line)  # Replace punctuation with space
-    words = line.split()  # Get words from each line
-    for word in words:
-        if word in wordCounts:
-            wordCounts[word] += 1  # Increase count for word
-        else:
-            wordCounts[word] = 1  # Add an item in the dictionary
+from tkinter import *  # Import tkinter
+import tkinter.messagebox  # Import tkinter.messagebox
+from tkinter.filedialog import askopenfilename
 
 
-# Replace punctuation in the line with space
-def replacePunctuation(line):
+def showResult():
+    analyzeFile(filename.get())
+
+
+def analyzeFile(filename):
+    try:
+        inputFile = open(filename, "r")  # Open the file
+
+        counts = 26 * [0]  # Create and initialize counts
+        for line in inputFile:
+            # Invoke the countLetters function to count each letter
+            countLetters(line.lower(), counts)
+
+        # Display results
+        for i in range(len(counts)):
+            if counts[i] != 0:
+                text.insert(END, chr(ord('a') + i) + " appears  " + str(counts[i])
+                            + (" time" if counts[i] == 1 else " times") + "\n")
+
+        inputFile.close()  # Close file
+    except IOError:
+        tkinter.messagebox.showwarning("Analyze File",
+                                       "File " + filename + " does not exist")
+
+# Count each letter in the string
+def countLetters(line, counts):
     for ch in line:
-        if ch in "~@#$%^&*()_-+=~<>?/,.;:!{}[]|'\"":
-            line = line.replace(ch, " ")
-
-    return line
+        if ch.isalpha():
+            counts[ord(ch) - ord('a')] += 1
 
 
-main()  # Call the main function
+def openFile():
+    filenameforReading = askopenfilename()
+    filename.set(filenameforReading)
+
+
+window = Tk()  # Create a window
+window.title("Occurrence of Letters")  # Set title
+
+frame1 = Frame(window)  # Hold four labels for displaying cards
+frame1.pack()
+
+scrollbar = Scrollbar(frame1)
+scrollbar.pack(side=RIGHT, fill=Y)
+text = Text(frame1, width=40, height=10, wrap=WORD,
+            yscrollcommand=scrollbar.set)
+text.pack()
+scrollbar.config(command=text.yview)
+
+frame2 = Frame(window)  # Hold four labels for displaying cards
+frame2.pack()
+
+Label(frame2, text="Please enter a filename: ").pack(side=LEFT)
+filename = StringVar()
+Entry(frame2, width=20, textvariable=filename).pack(side=LEFT)
+Button(frame2, text="Browse", command=openFile).pack(side=LEFT)
+Button(frame2, text="Show Result", command=showResult).pack(side=LEFT)
+
+window.mainloop()  # Create an event loop
