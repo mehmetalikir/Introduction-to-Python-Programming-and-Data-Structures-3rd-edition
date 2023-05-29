@@ -4,19 +4,16 @@
 
 ''''''
 
+import asyncio
 import itertools
 import time
-from concurrent.futures import ThreadPoolExecutor
 
-import requests
+import aiohttp
 
 start = time.time()
 
-# Define the number of concurrent requests you want to send
-concurrency = 10
-
 characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-lengths = [3]
+lengths = [2]
 
 sequences = []
 
@@ -30,18 +27,24 @@ for i in range(len(sequences)):
     urls.append(url)
 
 
-# Function to send HTTP requests
-def send_request(url):
-    response = requests.get(url)
-    if response.status_code == 200:
-        print("THIS", url, "IS ACTIVE.")
+# Define an async function to send HTTP requests
+async def send_request(url):
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as response:
+            # Do something with the response if needed
+            if response.status == 200:
+                print("THIS ", url, "IS ACTIVE")
 
 
-# Create a ThreadPoolExecutor to manage the concurrent requests
-with ThreadPoolExecutor(max_workers=concurrency) as executor:
-    # Submit each URL to the executor
-    # This will start sending requests concurrently
-    executor.map(send_request, urls)
+# Create an event loop
+loop = asyncio.get_event_loop()
+
+# Gather all the requests and execute them concurrently
+tasks = [send_request(url) for url in urls]
+loop.run_until_complete(asyncio.gather(*tasks))
+
+# Close the event loop
+loop.close()
 
 end = time.time()
 
