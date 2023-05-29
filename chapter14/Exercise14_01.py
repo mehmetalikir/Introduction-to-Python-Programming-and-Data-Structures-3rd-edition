@@ -2,50 +2,44 @@
 # Email : hidirsezgin@gmail.com, m.kir@student.unsw.edu.au
 # GitHub: /hidirsezgin, /mehmetalikir
 
-''''''
+'''(Working with tuples) Write a program that uses a loop to create a tuple containing
+the numbers from 0 to 999_999. Add another loop that does the same with a list.
+Finally, add two loops that iterate over the tuple and the list and sum up all
+the integers contained in each list. Measure and print the time it takes to create
+the tuple/list and then to do the processing. Note: To measure the time in seconds
+you can take a timestamp before you start execution(time.time()) take a timestamp
+after execution and subtract the first from the second'''
 
-import asyncio
-import itertools
 import time
 
-import aiohttp
-
-start = time.time()
-
-characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-lengths = [2]
-
-sequences = []
-
-for length in lengths:
-    sequences.extend([''.join(seq) for seq in itertools.product(characters, repeat=length)])
-
-urls = []
-
-for i in range(len(sequences)):
-    url = f"https://media.pearsoncmg.com/intl/ge/2022/cws/ge_liang_ipp_3/cw/content/{sequences[i]}.zip"
-    urls.append(url)
+startTime = time.time()  # Get start time
+# Create a tuple containing the numbers from 0 to 999_999
+t1 = tuple(i for i in range(999_999_9))
+endTime = time.time()  # Get end time
+runTime = int((endTime - startTime) * 1000)  # Get test time
+print("Tuple creation time: ", runTime, "milliseconds")
 
 
-# Define an async function to send HTTP requests
-async def send_request(url):
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url) as response:
-            # Do something with the response if needed
-            if response.status == 200:
-                print("THIS ", url, "IS ACTIVE")
+startTime = time.time()  # Get start time
+t2 = tuple([x for x in range(0, 999_999_9)])
+endTime = time.time()  # Get end time
+runTime = int((endTime - startTime) * 1000)  # Get test time
+print("List creation time: ", runTime, "milliseconds")
 
 
-# Create an event loop
-loop = asyncio.get_event_loop()
+startTime = time.time()  # Get start time
+sumList = 0
+for item in t1:
+    sumList += item
+endTime = time.time()  # Get end time
+runTime = int((endTime - startTime) * 1000)  # Get test time
+print("Tuple processing time: ", runTime, "milliseconds")
 
-# Gather all the requests and execute them concurrently
-tasks = [send_request(url) for url in urls]
-loop.run_until_complete(asyncio.gather(*tasks))
 
-# Close the event loop
-loop.close()
-
-end = time.time()
-
-print(end - start)
+startTime = time.time()  # Get start time
+sumList = 0
+for item in t2:
+    sumList += item
+endTime = time.time()  # Get end time
+runTime = int((endTime - startTime) * 1000)  # Get test time
+print("List processing time: ", runTime, "milliseconds")
