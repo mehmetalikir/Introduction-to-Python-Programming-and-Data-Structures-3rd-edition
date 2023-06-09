@@ -8,41 +8,36 @@ increasingly ordered substring. Analyze the time complexity of your program.'''
 
 def main():
     s = input("Please enter a string: ")
-    print("Maximum consecutive subsequence increasingly ordered substring is " + maxSubstring(s))
+    print("Maximum consecutive increasingly ordered substring is " + maxSubstring(s))
 
-# The worst-case complexity is O(n^2)
 def maxSubstring(s):
-    stringLength = len(s)
+    # Check if the input string is empty
+    if len(s) == 0:
+        return ""
 
-    # maxLength[i] stores the length of the max substring ending at index i
-    maxLength = stringLength * [0]
-    # previous[i] stores the index of the previous element in the sequence
-    previous = stringLength * [0]
+    # Initialize variables to track the maximum and current substrings
+    max_substring = ""
+    current_substring = s[0]
 
-    for i in range(len(s)):
-        previous[i] = -1
-        for j in range(i - 1, -1, -1):
-            if s[i] < s[j] and maxLength[i] < maxLength[j] + 1:
-                maxLength[i] = maxLength[j] + 1
-                previous[i] = j
-
-    # Find the largest subsequence length and ending index
-    maxL = maxLength[0]
-    index = 0
+    # Iterate through the input string
     for i in range(1, len(s)):
-        if maxL < maxLength[i]:
-            maxL = maxLength[i]
-            index = i
+        # Check if the current character is greater than or equal to the previous character
+        if ord(s[i]) >= ord(s[i-1]):
+            # If so, add the current character to the current substring
+            current_substring += s[i]
+        else:
+            # If not, compare the length of the current substring with the maximum substring
+            if len(current_substring) > len(max_substring):
+                # Update the maximum substring if necessary
+                max_substring = current_substring
+            # Reset the current substring to the current character
+            current_substring = s[i]
 
-    # Construct the subsequence by tracing through previous
-    i = maxL
-    result = ""
-    while index != -1:
-        result = s[index] + result
-        i -= 1
-        index = previous[index]
+    # Check the last current substring after the loop ends
+    if len(current_substring) > len(max_substring):
+        max_substring = current_substring
 
-    return result
+    return max_substring
 
 
 main()
