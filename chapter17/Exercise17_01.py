@@ -18,3 +18,51 @@ four test scores):
 
 After performing the sorts, the results should be printed.'''
 
+
+def nestedBubbleSort(testResults):
+    n = len(testResults)
+
+    for i in range(n):
+        for j in range(n - i - 1):
+            if testResults[j][0] > testResults[j + 1][0]:
+                testResults[j], testResults[j + 1] = testResults[j + 1], testResults[j]
+
+    for i in range(n):
+        for j in range(len(testResults[i][1])):
+            for k in range(len(testResults[i][1]) - j - 1):
+                if testResults[i][1][k] > testResults[i][1][k + 1]:
+                    testResults[i][1][k], testResults[i][1][k + 1] = testResults[i][1][k + 1], testResults[i][1][k]
+
+    return testResults
+
+
+def loadTestResults(file_name):
+    testResults = []
+
+    with open(file_name, 'r') as file:
+        lines = file.readlines()
+
+        for line in lines:
+            line = line.strip()
+            parts = line.split(', ')
+            name = parts[0]
+            scores = parts[1:]
+            testResults.append([name, scores])
+
+    return testResults
+
+
+def printTestResults(testResults):
+    for result in testResults:
+        print(result[0] + ': ' + ', '.join(result[1]))
+
+
+def main():
+    fileName = 'test_results.txt'  # Replace with the actual file name
+    testResults = loadTestResults(fileName)
+    sortedResults = nestedBubbleSort(testResults)
+    printTestResults(sortedResults)
+
+
+if __name__ == '__main__':
+    main()
