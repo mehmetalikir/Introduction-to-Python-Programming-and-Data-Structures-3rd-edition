@@ -1,0 +1,18 @@
+class LinkedList:
+    # Write the code for LinkedList
+
+def main():
+    lista = input("Enter list1: ").split()
+    list1 = LinkedList()
+    for s in lista:
+        list1.add(s)
+
+    print("list1.indexOf('red') is", list1.indexOf('red'))
+    list1.remove("red")
+    print("after invoking list1.remove('red'), list1 is", list1)
+    index = int(input("Enter an index: "))
+    list1.set(index, "orange")
+    print("after invoking list1.set('" + str(index) + " , orange)",
+        "list1 is", list1)
+
+main()
