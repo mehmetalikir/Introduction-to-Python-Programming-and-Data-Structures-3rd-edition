@@ -199,31 +199,37 @@ class TreeNode:
         self.left = None  # Point to the left node, default None
         self.right = None  # Point to the right node, default None
 
-
 class MyBST(BST):
-    # Returns the number of non-leaf nodes
+    def __init__(self):
+        BST.__init__(self)
+
+    # Returns the number of nonleaf nodes
     def getNumberOfNonLeaves(self):
-        return self.getNumberOfNonLeaves1(self.root)
+        return self.size - self.getNumberOfLeaves()
 
-    # Helper method to calculate the number of non-leaf nodes
-    def getNumberOfNonLeaves1(self, root):
-        if root is None or (root.left is None and root.right is None):
+    # Returns the number of leaf nodes
+    def getNumberOfLeaves(self):
+        return self.getNumberOfLeaves1(self.root)
+
+    # Helper method to calculate the number of leaf nodes
+    def getNumberOfLeaves1(self, root):
+        if root is None:
             return 0
+        elif root.left is None and root.right is None:
+            return 1
         else:
-            return 1 + self.getNumberOfNonLeaves1(root.left) + self.getNumberOfNonLeaves1(root.right)
-
+            return self.getNumberOfLeaves1(root.left) + self.getNumberOfLeaves1(root.right)
 
 def main():
     tree = MyBST()
-    print("The number of non-leaf nodes in the tree is", tree.getNumberOfNonLeaves())
+    print("The number of nonleaves in an empty tree is", tree.getNumberOfNonLeaves())
 
     s = input("Enter integers in one line for tree separated by space: ")
-    list = [int(x) for x in s.split()]
-    for e in list:
+    lst = [int(x) for x in s.split()]
+    for e in lst:
         tree.insert(e)
 
     print(s, "are inserted into the tree")
-    print("The number of leaves in the tree is", tree.getNumberOfNonLeaves())
-
+    print("The number of nonleaves in the tree is", tree.getNumberOfNonLeaves())
 
 main()
