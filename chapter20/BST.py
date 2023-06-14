@@ -106,7 +106,6 @@ class BST:
     # Return True if the element is deleted successfully
     # Return False if the element is not in the tree
     def delete(self, e):
-        # Locate the node to be deleted and its parent node
         parent = None
         current = self.root
         while current != None:
@@ -117,14 +116,12 @@ class BST:
                 parent = current
                 current = current.right
             else:
-                break  # Element is in the tree pointed by current
+                break
 
         if current == None:
-            return False  # Element is not in the tree
+            return False
 
-        # Case 1: current has no left children
         if current.left == None:
-            # Connect the parent with the right child of the current node
             if parent == None:
                 self.root = current.right
             else:
@@ -133,28 +130,22 @@ class BST:
                 else:
                     parent.right = current.right
         else:
-            # Case 2: The current node has a left child
-            # Locate the rightmost node in the left subtree of
-            # the current node and also its parent
             parentOfRightMost = current
             rightMost = current.left
 
             while rightMost.right != None:
                 parentOfRightMost = rightMost
-                rightMost = rightMost.right  # Keep going to the right
+                rightMost = rightMost.right
 
-            # Replace the element in current by the element in rightMost
             current.element = rightMost.element
 
-            # Eliminate rightmost node
             if parentOfRightMost.right == rightMost:
                 parentOfRightMost.right = rightMost.left
             else:
-                # Special case: parentOfRightMost == current
                 parentOfRightMost.left = rightMost.left
 
         self.size -= 1
-        return True  # Element deleted
+        return True
 
     # Return true if the tree is empty
     def isEmpty(self):
