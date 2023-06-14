@@ -1,247 +1,148 @@
-from BST import BST
-from BST import TreeNode
-
-
-
-class AVLTree(BST):
-    def __init__(self):
-        BST.__init__(self)
-        self.root = None
-
-
-    # Override the createNewNode method to create an AVLTreeNode
-    def createNewNode(self, e):
-        return AVLTreeNode(e)
-
-    def kthSmallest(self, k):
-        if k < 1 or k > self.getSize():
-            return None
-
-        node = self.root
-
-        while node:
-            leftSize = self.getSize(node.left)
-            if k == leftSize + 1:
-                return node.value
-            elif k <= leftSize:
-                node = node.left
-            else:
-                node = node.right
-                k -= leftSize + 1
-
-        return None
-
-    def getSize(self, node=None):
-        if node is None:
-            node = self.root
-        return node.size if node else 0
-
-    # Override the insert method to balance the tree if necessary
-    def insert(self, o):
-        successful = BST.insert(self, o)
-        if not successful:
-            return False  # o is already in the tree
-        else:
-            self.balancePath(o)  # Balance from o to the root if necessary
-
-        return True  # o is inserted
-
-    # Update the height of a specified node
-    def updateHeight(self, node):
-        if node.left == None and node.right == None:  # node is a leaf
-            node.height = 0
-        elif node.left == None:  # node has no left subtree
-            node.height = 1 + (node.right).height
-        elif node.right == None:  # node has no right subtree
-            node.height = 1 + (node.left).height
-        else:
-            node.height = 1 + max((node.right).height, (node.left).height)
-
-    # Balance the nodes in the path from the specified
-    # node to the root if necessary
-    def balancePath(self, o):
-        path = BST.path(self, o)
-        for i in range(len(path) - 1, -1, -1):
-            A = path[i]
-            self.updateHeight(A)
-            parentOfA = None if (A == self.root) else path[i - 1]
-
-            if self.balanceFactor(A) == -2:
-                if self.balanceFactor(A.left) <= 0:
-                    self.balanceLL(A, parentOfA)  # Perform LL rotation
-                else:
-                    self.balanceLR(A, parentOfA)  # Perform LR rotation
-            elif self.balanceFactor(A) == +2:
-                if self.balanceFactor(A.right) >= 0:
-                    self.balanceRR(A, parentOfA)  # Perform RR rotation
-                else:
-                    self.balanceRL(A, parentOfA)  # Perform RL rotation
-
-    # Return the balance factor of the node
-    def balanceFactor(self, node):
-        if node.right == None:  # node has no right subtree
-            return -node.height
-        elif node.left == None:  # node has no left subtree
-            return +node.height
-        else:
-            return (node.right).height - (node.left).height
-
-    # Balance LL (see Figure 14.2)
-    def balanceLL(self, A, parentOfA):
-        B = A.left  # A is left-heavy and B is left-heavy
-
-        if A == self.root:
-            self.root = B
-        else:
-            if parentOfA.left == A:
-                parentOfA.left = B
-            else:
-                parentOfA.right = B
-
-        A.left = B.right  # Make T2 the left subtree of A
-        B.right = A  # Make A the left child of B
-        self.updateHeight(A)
-        self.updateHeight(B)
-
-    # Balance LR (see Figure 14.2(c))
-    def balanceLR(self, A, parentOfA):
-        B = A.left  # A is left-heavy
-        C = B.right  # B is right-heavy
-
-        if A == self.root:
-            self.root = C
-        else:
-            if parentOfA.left == A:
-                parentOfA.left = C
-            else:
-                parentOfA.right = C
-
-        A.left = C.right  # Make T3 the left subtree of A
-        B.right = C.left  # Make T2 the right subtree of B
-        C.left = B
-        C.right = A
-
-        # Adjust heights
-        self.updateHeight(A)
-        self.updateHeight(B)
-        self.updateHeight(C)
-
-    # Balance RR (see Figure 14.2(b))
-    def balanceRR(self, A, parentOfA):
-        B = A.right  # A is right-heavy and B is right-heavy
-
-        if A == self.root:
-            self.root = B
-        else:
-            if parentOfA.left == A:
-                parentOfA.left = B
-            else:
-                parentOfA.right = B
-
-        A.right = B.left  # Make T2 the right subtree of A
-        B.left = A
-        self.updateHeight(A)
-        self.updateHeight(B)
-
-    # Balance RL (see Figure 14.2(d))
-    def balanceRL(self, A, parentOfA):
-        B = A.right  # A is right-heavy
-        C = B.left  # B is left-heavy
-
-        if A == self.root:
-            self.root = C
-        else:
-            if parentOfA.left == A:
-                parentOfA.left = C
-            else:
-                parentOfA.right = C
-
-        A.right = C.left  # Make T2 the right subtree of A
-        B.left = C.right  # Make T3 the left subtree of B
-        C.left = A
-        C.right = B
-
-        # Adjust heights
-        self.updateHeight(A)
-        self.updateHeight(B)
-        self.updateHeight(C)
-
-    # Delete an element from the binary tree.
-    # Return True if the element is deleted successfully
-    # Return False if the element is not in the tree
-    def delete(self, element):
-        if self.root == None:
-            return False  # Element is not in the tree
-
-        # Locate the node to be deleted and also locate its parent node
-        parent = None
-        current = self.root
-        while current != None:
-            if element < current.element:
-                parent = current
-                current = current.left
-            elif element > current.element:
-                parent = current
-                current = current.right
-            else:
-                break  # Element is in the tree pointed by current
-
-        if current == None:
-            return False  # Element is not in the tree
-
-        # Case 1: current has no left children (See Figure 23.6)
-        if current.left == None:
-            # Connect the parent with the right child of the current node
-            if parent == None:
-                root = current.right
-            else:
-                if element < parent.element:
-                    parent.left = current.right
-                else:
-                    parent.right = current.right
-
-            # Balance the tree if necessary
-            self.balancePath(parent.element)
-        else:
-            # Case 2: The current node has a left child
-            # Locate the rightmost node in the left subtree of
-            # the current node and also its parent
-            parentOfRightMost = current
-            rightMost = current.left
-
-            while rightMost.right != None:
-                parentOfRightMost = rightMost
-                rightMost = rightMost.right  # Keep going to the right
-
-            # Replace the element in current by the element in rightMost
-            current.element = rightMost.element
-
-            # Eliminate rightmost node
-            if parentOfRightMost.right == rightMost:
-                parentOfRightMost.right = rightMost.left
-            else:
-                # Special case: parentOfRightMost is current
-                parentOfRightMost.left = rightMost.left
-
-            # Balance the tree if necessary
-            self.balancePath(parentOfRightMost.element)
-
-        self.size -= 1  # One element deleted
-        return True  # Element inserted
-
-
-# AVLTreeNode is TreeNode plus height
-def __init__(self, value):
-    self.value = value
-    self.left = None
-    self.right = None
-    self.height = 1
-    self.size = 1
-
 class AVLTreeNode:
-    def __init__(self, value):
-        self.value = value
+    def __init__(self, key):
+        self.key = key
         self.left = None
         self.right = None
         self.height = 1
-        self.size = 1  # Size of the subtree rooted at this node
+
+
+class AVLTree:
+    def __init__(self):
+        self.root = None
+
+    def insert(self, key):
+        self.root = self._insert(self.root, key)
+
+    def _insert(self, node, key):
+        if node is None:
+            return AVLTreeNode(key)
+
+        if key < node.key:
+            node.left = self._insert(node.left, key)
+        else:
+            node.right = self._insert(node.right, key)
+
+        node.height = 1 + max(self._getHeight(node.left), self._getHeight(node.right))
+
+        balance = self._getBalance(node)
+
+        if balance > 1:
+            if key < node.left.key:
+                return self._rotateRight(node)
+            else:
+                node.left = self._rotateLeft(node.left)
+                return self._rotateRight(node)
+
+        if balance < -1:
+            if key > node.right.key:
+                return self._rotateLeft(node)
+            else:
+                node.right = self._rotateRight(node.right)
+                return self._rotateLeft(node)
+
+        return node
+
+    def delete(self, key):
+        self.root = self._delete(self.root, key)
+
+    def _delete(self, node, key):
+        if node is None:
+            return node
+
+        if key < node.key:
+            node.left = self._delete(node.left, key)
+        elif key > node.key:
+            node.right = self._delete(node.right, key)
+        else:
+            if node.left is None:
+                return node.right
+            elif node.right is None:
+                return node.left
+            else:
+                successor = self._getMinValueNode(node.right)
+                node.key = successor.key
+                node.right = self._delete(node.right, successor.key)
+
+        node.height = 1 + max(self._getHeight(node.left), self._getHeight(node.right))
+
+        balance = self._getBalance(node)
+
+        if balance > 1:
+            if self._getBalance(node.left) < 0:
+                node.left = self._rotateLeft(node.left)
+            return self._rotateRight(node)
+
+        if balance < -1:
+            if self._getBalance(node.right) > 0:
+                node.right = self._rotateRight(node.right)
+            return self._rotateLeft(node)
+
+        return node
+
+    def search(self, key):
+        return self._search(self.root, key)
+
+    def _search(self, node, key):
+        if node is None or node.key == key:
+            return node
+
+        if key < node.key:
+            return self._search(node.left, key)
+        else:
+            return self._search(node.right, key)
+
+    def isAVLTree(self):
+        return self._isAVLTree(self.root)
+
+    def _isAVLTree(self, node):
+        if node is None:
+            return True
+
+        if not self._isBalanced(node):
+            return False
+
+        return self._isAVLTree(node.left) and self._isAVLTree(node.right)
+
+    def _isBalanced(self, node):
+        balance = self._getBalance(node)
+        return abs(balance) <= 1
+
+    def _getHeight(self, node):
+        if node is None:
+            return 0
+        return node.height
+
+    def _getBalance(self, node):
+        if node is None:
+            return 0
+        return self._getHeight(node.left) - self._getHeight(node.right)
+
+    def _rotateLeft(self, z):
+        y = z.right
+        T2 = y.left
+
+        y.left = z
+        z.right = T2
+
+        z.height = 1 + max(self._getHeight(z.left), self._getHeight(z.right))
+        y.height = 1 + max(self._getHeight(y.left), self._getHeight(y.right))
+
+        return y
+
+    def _rotateRight(self, z):
+        y = z.left
+        T3 = y.right
+
+        y.right = z
+        z.left = T3
+
+        z.height = 1 + max(self._getHeight(z.left), self._getHeight(z.right))
+        y.height = 1 + max(self._getHeight(y.left), self._getHeight(y.right))
+
+        return y
+
+    def _getMinValueNode(self, node):
+        current = node
+        while current.left is not None:
+            current = current.left
+        return current
