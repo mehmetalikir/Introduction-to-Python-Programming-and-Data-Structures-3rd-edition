@@ -1,168 +1,93 @@
 class BST:
+    class TreeNode:
+        def __init__(self, key):
+            self.key = key
+            self.left = None
+            self.right = None
+
     def __init__(self):
         self.root = None
-        self.size = 0
 
-    # Return True if the element is in the tree
-    def search(self, e):
-        current = self.root  # Start from the root
-
-        while current != None:
-            if e < current.element:
-                current = current.left
-            elif e > current.element:
-                current = current.right
-            else:  # element matches current.element
-                return True  # Element is found
-
-        return False
-
-    # Insert element e into the binary search tree
-    # Return True if the element is inserted successfully
-    def insert(self, e):
-        if self.root == None:
-            self.root = self.createNewNode(e)  # Create a new root
+    def insert(self, key):
+        if self.root is None:
+            self.root = self.TreeNode(key)
         else:
-            # Locate the parent node
-            parent = None
-            current = self.root
-            while current != None:
-                if e < current.element:
-                    parent = current
-                    current = current.left
-                elif e > current.element:
-                    parent = current
-                    current = current.right
-                else:
-                    return False  # Duplicate node not inserted
+            self._insertRecursive(key, self.root)
 
-            # Create the new node and attach it to the parent node
-            if e < parent.element:
-                parent.left = self.createNewNode(e)
+    def _insertRecursive(self, key, node):
+        if key < node.key:
+            if node.left is None:
+                node.left = self.TreeNode(key)
             else:
-                parent.right = self.createNewNode(e)
-
-        self.size += 1  # Increase tree size
-        return True  # Element inserted
-
-    # Create a new TreeNode for element e
-    def createNewNode(self, e):
-        return TreeNode(e)
-
-    # Return the size of the tree
-    def getSize(self):
-        return self.size
-
-    # Inorder traversal from the root
-    def inorder(self):
-        self.inorderHelper(self.root)
-
-    # Inorder traversal from a subtree
-    def inorderHelper(self, r):
-        if r != None:
-            self.inorderHelper(r.left)
-            print(r.element, end=" ")
-            self.inorderHelper(r.right)
-
-    # Postorder traversal from the root
-    def postorder(self):
-        self.postorderHelper(self.root)
-
-    # Postorder traversal from a subtree
-    def postorderHelper(self, root):
-        if root != None:
-            self.postorderHelper(root.left)
-            self.postorderHelper(root.right)
-            print(root.element, end=" ")
-
-    # Preorder traversal from the root
-    def preorder(self):
-        self.preorderHelper(self.root)
-
-    # Preorder traversal from a subtree
-    def preorderHelper(self, root):
-        if root != None:
-            print(root.element, end=" ")
-            self.preorderHelper(root.left)
-            self.preorderHelper(root.right)
-
-    # Returns a path from the root leading to the specified element
-    def path(self, e):
-        list = []
-        current = self.root  # Start from the root
-
-        while current != None:
-            list.append(current)  # Add the node to the list
-            if e < current.element:
-                current = current.left
-            elif e > current.element:
-                current = current.right
+                self._insertRecursive(key, node.left)
+        else:
+            if node.right is None:
+                node.right = self.TreeNode(key)
             else:
-                break
+                self._insertRecursive(key, node.right)
 
-        return list  # Return an array of nodes
+    def delete(self, key):
+        self.root = self._deleteRecursive(key, self.root)
 
-    # Delete an element from the binary search tree.
-    # Return True if the element is deleted successfully
-    # Return False if the element is not in the tree
-    def delete(self, e):
-        parent = None
-        current = self.root
-        while current != None:
-            if e < current.element:
-                parent = current
-                current = current.left
-            elif e > current.element:
-                parent = current
-                current = current.right
-            else:
-                break
+    def _deleteRecursive(self, key, node):
+        if node is None:
+            return node
 
-        if current == None:
+        if key < node.key:
+            node.left = self._deleteRecursive(key, node.left)
+        elif key > node.key:
+            node.right = self._deleteRecursive(key, node.right)
+        else:
+            if node.left is None:
+                return node.right
+            elif node.right is None:
+                return node.left
+
+            minRight = self._findMin(node.right)
+            node.key = minRight.key
+            node.right = self._deleteRecursive(minRight.key, node.right)
+
+        return node
+
+    def search(self, key):
+        return self._searchRecursive(key, self.root)
+
+    def _searchRecursive(self, key, node):
+        if node is None or node.key == key:
+            return node
+
+        if key < node.key:
+            return self._searchRecursive(key, node.left)
+        else:
+            return self._searchRecursive(key, node.right)
+
+    def isBalanced(self):
+        return self._isBalancedRecursive(self.root)
+
+    def _isBalancedRecursive(self, node):
+        if node is None:
+            return True
+
+        leftHeight = self._getHeight(node.left)
+        rightHeight = self._getHeight(node.right)
+        balanceFactor = abs(leftHeight - rightHeight)
+
+        if balanceFactor > 1:
             return False
 
-        if current.left == None:
-            if parent == None:
-                self.root = current.right
-            else:
-                if e < parent.element:
-                    parent.left = current.right
-                else:
-                    parent.right = current.right
-        else:
-            parentOfRightMost = current
-            rightMost = current.left
+        return self._isBalancedRecursive(node.left) and self._isBalancedRecursive(node.right)
 
-            while rightMost.right != None:
-                parentOfRightMost = rightMost
-                rightMost = rightMost.right
+    def _getHeight(self, node):
+        if node is None:
+            return -1
 
-            current.element = rightMost.element
+        leftHeight = self._getHeight(node.left)
+        rightHeight = self._getHeight(node.right)
 
-            if parentOfRightMost.right == rightMost:
-                parentOfRightMost.right = rightMost.left
-            else:
-                parentOfRightMost.left = rightMost.left
+        return max(leftHeight, rightHeight) + 1
 
-        self.size -= 1
-        return True
+    def _findMin(self, node):
+        while node.left is not None:
+            node = node.left
 
-    # Return true if the tree is empty
-    def isEmpty(self):
-        return self.size == 0
-
-    # Remove all elements from the tree
-    def clear(self):
-        self.root == None
-        self.size == 0
-
-    # Return the root of the tree
-    def getRoot(self):
-        return self.root
-
-
-class TreeNode:
-    def __init__(self, e):
-        self.element = e
-        self.left = None  # Point to the left node, default None
-        self.right = None  # Point to the right node, default None
+        return node
