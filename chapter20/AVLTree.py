@@ -2,13 +2,39 @@ from BST import BST
 from BST import TreeNode
 
 
+
 class AVLTree(BST):
     def __init__(self):
         BST.__init__(self)
+        self.root = None
+
 
     # Override the createNewNode method to create an AVLTreeNode
     def createNewNode(self, e):
         return AVLTreeNode(e)
+
+    def kthSmallest(self, k):
+        if k < 1 or k > self.getSize():
+            return None
+
+        node = self.root
+
+        while node:
+            leftSize = self.getSize(node.left)
+            if k == leftSize + 1:
+                return node.value
+            elif k <= leftSize:
+                node = node.left
+            else:
+                node = node.right
+                k -= leftSize + 1
+
+        return None
+
+    def getSize(self, node=None):
+        if node is None:
+            node = self.root
+        return node.size if node else 0
 
     # Override the insert method to balance the tree if necessary
     def insert(self, o):
@@ -34,7 +60,7 @@ class AVLTree(BST):
     # Balance the nodes in the path from the specified
     # node to the root if necessary
     def balancePath(self, o):
-        path = BST.path(self, o);
+        path = BST.path(self, o)
         for i in range(len(path) - 1, -1, -1):
             A = path[i]
             self.updateHeight(A)
@@ -205,7 +231,17 @@ class AVLTree(BST):
 
 
 # AVLTreeNode is TreeNode plus height
-class AVLTreeNode(TreeNode):
-    def __init__(self, e):
-        self.height = 0  # New data field
-        TreeNode.__init__(self, e)
+def __init__(self, value):
+    self.value = value
+    self.left = None
+    self.right = None
+    self.height = 1
+    self.size = 1
+
+class AVLTreeNode:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+        self.height = 1
+        self.size = 1  # Size of the subtree rooted at this node
