@@ -2,11 +2,11 @@
 # Email : hidirsezgin@gmail.com, m.kir@student.unsw.edu.au
 # GitHub: /hidirsezgin, /mehmetalikir
 
-'''(Revise Listing 22.12, NineTail.py) The progam in Listing 22.12 lets the user
+'''(Revise Listing 22.12, NineTail.py) The program in Listing 22.12 lets the user
 enter an input for the nine tail program form the console and displays the result
-on the consnole, Write a GUI program that lets user set an initial state of the
+on the console, Write a GUI program that lets user set an initial state of the
 nine coins(see Figure 22.21a) and click the Solve button to display the solution,
-as shown in Figure 22.21b. Initially, the user can click the maousse button to flip a
+as shown in Figure 22.21b. Initially, the user can click the mouse button to flip a
 coin'''
 
 from tkinter import *
