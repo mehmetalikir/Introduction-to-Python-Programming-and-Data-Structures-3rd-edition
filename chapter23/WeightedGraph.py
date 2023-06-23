@@ -2,7 +2,7 @@ from Graph import Graph
 from Graph import Tree
 from WeightedEdge import WeightedEdge
 
-INFINITY = float('inf') # 1e+308 Infinity value
+INFINITY = float('inf')  # 1e+308 Infinity value
 
 
 class WeightedGraph(Graph):
@@ -16,11 +16,18 @@ class WeightedGraph(Graph):
             self.neighbors.append([])  # Each element is another list
 
         for edge in edges:
-            u = edge.u
-            v = edge.v
-            w = edge.weight
+            u = edge[0]  # Access the first element of the edge list
+            v = edge[1]  # Access the second element of the edge list
+            w = edge[2]  # Access the third element of the edge list
             # Insert an edge (u, v, w)
             self.neighbors[u].append(WeightedEdge(u, v, w))
+
+        # for edge in edges:
+        #     u = edge.u
+        #     v = edge.v
+        #     w = edge.weight
+        #     # Insert an edge (u, v, w)
+        #     self.neighbors[u].append(WeightedEdge(u, v, w))
 
         return self.neighbors
 
@@ -152,3 +159,19 @@ class ShortestPathTree(Tree):
         for i in range(len(self.costs)):
             self.printPath(i)  # Print a path from i to the source
             print("(cost: " + str(self.costs[i]) + ")")  # Path cost
+
+    def printPath(self, v):
+        path = self.getPath(v)
+        print("Path:", end=" ")
+        for i in range(len(path)):
+            print(path[i], end=" ")
+            if i < len(path) - 1:
+                print("->", end=" ")
+        print()
+
+    def getPath(self, vertexIndex):
+        path = []
+        while vertexIndex != -1:
+            path.insert(0, self.vertices[vertexIndex])
+            vertexIndex = self.parent[vertexIndex]
+        return path
