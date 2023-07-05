@@ -3,8 +3,7 @@ class AVLTreeNode:
         self.key = key
         self.left = None
         self.right = None
-        self.height = 0
-
+        self.height = 1
 
 
 class AVLTree:
